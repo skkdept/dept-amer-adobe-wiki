@@ -119,117 +119,97 @@
 
   <!-- Main Content -->
   <section class="learning-content">
-    <h1>Local Magento Setup</h1>
-    <p>A comprehensive guide to setting up Magento 2 on your local machine. This guide covers the complete installation process from prerequisites to post-installation configuration.</p>
+    <h1>🏗️ Project Setup: Adobe Commerce (Docker)</h1>
+    <p>This section uses the <code>markshust/docker-magento</code> configuration for a robust local development environment.</p>
 
-    <!-- System Requirements -->
-    <h2>System Requirements</h2>
-    <p>Ensure your system meets these minimum requirements:</p>
+    <!-- Installation & Initialization -->
+    <h2>1. Installation & Initialization</h2>
+    <p>Run these in your project directory to build the environment and install the Luma/Venia sample data.</p>
+    
+    <h3>Automated Install (Standard for 2.4.8-p3)</h3>
+    <div class="code-block">curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento.test community 2.4.8-p3</div>
+
+    <h3>Deploy Sample Data & Sync Schema</h3>
+    <div class="code-block">bin/magento sampledata:deploy
+bin/magento setup:upgrade</div>
+
+    <h3>Reindex the Catalog (Critical for AEM to "see" products)</h3>
+    <div class="code-block">bin/magento indexer:reindex
+bin/magento cache:flush</div>
+
+    <!-- Local Dev "Quality of Life" Settings -->
+    <h2>2. Local Dev "Quality of Life" Settings</h2>
+    <p>Disable security features that interfere with local testing.</p>
+
     <ul class="section-list">
-      <li><strong>Operating System</strong> - macOS, Linux, or Windows with WSL2</li>
-      <li><strong>PHP</strong> - 8.1 or 8.2 (Apache or Nginx)</li>
-      <li><strong>MySQL</strong> - 8.0 or MariaDB 10.4+</li>
-      <li><strong>RAM</strong> - Minimum 2GB, recommended 4GB+</li>
-      <li><strong>Disk Space</strong> - At least 5GB for full installation</li>
-      <li><strong>Composer</strong> - Latest version</li>
+      <li><strong>Disable MFA/2FA</strong> - <code>bin/magento module:disable Magento_TwoFactorAuth</code></li>
+      <li><strong>Disable Password Expiration</strong> - <code>bin/magento config:set admin/security/password_is_forced 0</code></li>
     </ul>
 
-    <!-- Installation Guide -->
-    <h2>Installation Guide</h2>
-    <p>Follow this step-by-step process to install Magento locally:</p>
-    
-    <h3>Step 1: Prepare Your Environment</h3>
-    <p>Install required packages and tools:</p>
-    <div class="code-block"># For macOS with Homebrew
-brew install php@8.2 composer mysql
-
-# For Ubuntu/Debian
-sudo apt-get install php8.2 composer mysql-server</div>
-
-    <h3>Step 2: Download Magento</h3>
-    <p>Download Magento 2 using Composer:</p>
-    <div class="code-block">composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento2-local</div>
-
-    <h3>Step 3: Configure Database</h3>
-    <p>Create a database and user for Magento:</p>
-    <div class="code-block">mysql -u root -p
-CREATE DATABASE magento2;
-CREATE USER 'magento'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON magento2.* TO 'magento'@'localhost';
-FLUSH PRIVILEGES;</div>
-
-    <h3>Step 4: Install Magento</h3>
-    <p>Run the Magento installation command:</p>
-    <div class="code-block">cd magento2-local
-php bin/magento setup:install \
-  --base-url=http://localhost/magento2-local/ \
-  --db-host=localhost \
-  --db-name=magento2 \
-  --db-user=magento \
-  --db-password=password \
-  --admin-firstname=Admin \
-  --admin-lastname=User \
-  --admin-email=admin@example.com \
-  --admin-user=admin \
-  --admin-password=Admin123!@# \
-  --language=en_US \
-  --currency=USD \
-  --timezone=America/Chicago</div>
-
-    <h3>Step 5: Verify Installation</h3>
-    <p>Check that Magento is installed correctly:</p>
-    <div class="code-block">php bin/magento setup:di:compile
-php bin/magento setup:static-content:deploy -f
-php bin/magento cache:clean</div>
-
-    <!-- Post-Installation Configuration -->
-    <h2>Post-Installation Configuration</h2>
-    <p>After installation, configure these important settings:</p>
-    
-    <h3>Web Server Configuration</h3>
-    <p>Set up virtual host for your Magento installation. For Apache, create a virtual host file:</p>
-    <div class="code-block">&lt;VirtualHost *:80&gt;
-    ServerName magento2.local
-    DocumentRoot /path/to/magento2-local/pub
-    &lt;Directory /path/to/magento2-local/pub&gt;
-        AllowOverride All
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;</div>
-
-    <h3>File Permissions</h3>
-    <p>Set proper file permissions for Magento directories:</p>
-    <div class="code-block">cd /path/to/magento2-local
-find . -type d -exec chmod 755 {} \;
-find . -type f -exec chmod 644 {} \;
-chmod u+x bin/magento</div>
-
-    <!-- Development Mode -->
-    <h2>Development Mode</h2>
-    <p>Switch to developer mode for better debugging:</p>
-    <div class="code-block">php bin/magento deploy:mode:set developer</div>
-    
-    <p>In developer mode, static files are created on-demand and slower performance is expected. This mode is ideal for development.</p>
-
-    <!-- Common Commands -->
-    <h2>Essential Magento Commands</h2>
+    <h3>Admin Credentials</h3>
     <ul class="section-list">
-      <li><code>php bin/magento cache:clean</code> - Clear all caches</li>
-      <li><code>php bin/magento cache:flush</code> - Flush all caches</li>
-      <li><code>php bin/magento indexer:reindex</code> - Reindex all data</li>
-      <li><code>php bin/magento setup:upgrade</code> - Run database upgrades</li>
-      <li><code>php bin/magento admin:user:create</code> - Create admin user</li>
+      <li><strong>URL</strong> - <a href="https://magento.test/admin" target="_blank">https://magento.test/admin</a></li>
+      <li><strong>User</strong> - <code>john.smith</code></li>
+      <li><strong>Pass</strong> - <code>password123</code></li>
     </ul>
 
-    <!-- Next Steps -->
-    <h2>Next Steps</h2>
-    <p>After successful setup:</p>
+    <!-- AEM to Magento Handshake (OSGi) -->
+    <h2>🔗 AEM to Magento Handshake (OSGi)</h2>
+    <p>AEM must be configured to trust your local SSL certificate and use the correct "pipe" identifier. Navigate to your OSGi ConfigMgr.</p>
+
+    <h3>1. GraphQL Client (~venia)</h3>
     <ul class="section-list">
-      <li>Log into the admin panel at <code>/admin</code></li>
-      <li>Explore the <a href="overview.html">Adobe Commerce Architecture Overview</a></li>
-      <li>Learn about <a href="hybrid-setup.html">Hybrid Development Setup</a></li>
-      <li>Start developing custom extensions</li>
+      <li><strong>GraphQL Service URL</strong> - <code>https://magento.test/graphql</code> (Must be https).</li>
+      <li><strong>GraphQL Service Identifier</strong> - <code>venia</code> (Lowercase).</li>
+      <li><strong>Accept self-signed SSL certificates</strong> - ✅ Checked.</li>
+      <li><strong>Allow HTTP communication</strong> - ✅ Checked.</li>
+      <li><strong>Default HTTP Headers</strong> - <code>Authorization : Bearer local-dev</code>.</li>
     </ul>
+
+    <h3>2. GraphQL Proxy Servlet</h3>
+    <ul class="section-list">
+      <li><strong>Commerce GraphQL Endpoint</strong> - <code>https://magento.test/graphql</code>.</li>
+      <li><strong>Authentication</strong> - None.</li>
+      <li><strong>Removed Headers</strong> - Ensure this field is Empty (Delete "Cookie" if it's there).</li>
+    </ul>
+
+    <!-- AEM Cloud Service Mapping -->
+    <h2>📂 AEM Cloud Service Mapping</h2>
+    <p>Even with the right URL, AEM won't show products unless the site folder is mapped to your client.</p>
+
+    <ol class="section-list" style="list-style: decimal; padding-left: 2rem;">
+      <li style="display: list-item; border-bottom: none; padding: 0.5rem 0;">Go to <strong>Tools > Cloud Services > CIF Configurations</strong>.</li>
+      <li style="display: list-item; border-bottom: none; padding: 0.5rem 0;">Select the <strong>Venia</strong> folder and click <strong>Properties</strong>.</li>
+      <li style="display: list-item; border-bottom: none; padding: 0.5rem 0;"><strong>GraphQL Client</strong>: Select <code>venia</code> (Ensure it's not the default one).</li>
+      <li style="display: list-item; border-bottom: none; padding: 0.5rem 0;"><strong>Root Category ID</strong>: Set to <code>Mg==</code> (This targets the Luma Product Catalog).</li>
+      <li style="display: list-item; border-bottom: none; padding: 0.5rem 0;">Save & Close.</li>
+    </ol>
+
+    <!-- Testing Offers & Promotions -->
+    <h2>🎟️ Testing Offers & Promotions</h2>
+    <p>To verify the connection is dynamic, create an offer in Magento and check AEM.</p>
+
+    <h3>In Magento</h3>
+    <p>Go to <strong>Marketing > Promotions > Cart Price Rules</strong>.</p>
+    <ul class="section-list">
+      <li><strong>Create Rule</strong> - 20% Off Bags.</li>
+      <li><strong>Websites</strong> - Main Website.</li>
+      <li><strong>Customer Groups</strong> - NOT LOGGED IN.</li>
+      <li><strong>Actions</strong> - "Percent of product price discount" | <strong>Amount</strong>: 20.</li>
+    </ul>
+
+    <h3>In AEM</h3>
+    <p>Open the <strong>Products Console</strong>. Open the <strong>Joust Duffle Bag</strong>.</p>
+    <p>The price components on the page should now show the 20% discount applied automatically.</p>
+
+    <!-- Quick Terminal "Sanity Check" -->
+    <h2>📊 Quick Terminal "Sanity Check"</h2>
+    <p>If the products don't appear in AEM, run this to see if Magento is actually sending data:</p>
+
+    <div class="code-block">curl -k -X POST -H "Content-Type: application/json" --data '{ "query": "{products(search: \"bag\", pageSize: 1) {items {name}}}" }' https://magento.test/graphql</div>
+
+    <p><strong>Success</strong>: Returns <code>{"name":"Joust Duffle Bag"}</code>.</p>
+    <p><strong>Fix</strong>: If this works but AEM is blank, the issue is your Identifier (must be <code>venia</code>) or Proxy Config.</p>
 
     <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dept-grey-4);">
       <a href="../../index.html#adobe-commerce" class="btn btn-secondary">Back to Adobe Commerce</a>
