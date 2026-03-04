@@ -789,7 +789,6 @@ footer a:hover {
   cursor: pointer;
   font-size: 1rem;
   color: var(--dept-grey-2);
-  padding: 0.4rem;
   display: flex;
   align-items: center;
   transition: color 0.2s ease;

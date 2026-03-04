@@ -57,6 +57,17 @@
     }
     var q = query.toLowerCase().trim();
     var matches = searchIndex.filter(function (item) {
+      // Prioritize skipping index/category pages if needed, 
+      // but the user wants to search "contents of the page, not pages itself".
+      // Usually this means they want to search the actual deep content pages.
+      
+      // If the URL is just "index.html" or one of the top-level category pages, 
+      // we might want to deprioritize or skip them.
+      var isCategoryPage = item.url === 'index.html' || 
+                          (item.url.startsWith('pages/') && !item.url.includes('/', 6));
+      
+      if (isCategoryPage) return false;
+
       if (item.title.toLowerCase().indexOf(q) !== -1) return true;
       if (item.description.toLowerCase().indexOf(q) !== -1) return true;
       for (var i = 0; i < item.keywords.length; i++) {
