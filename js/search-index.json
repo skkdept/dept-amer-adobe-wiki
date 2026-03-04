@@ -243,5 +243,38 @@
       "site migration",
       "content import"
     ]
+  },
+  {
+    "title": "TurboTax Presentations",
+    "url": "pages/clients/turbotax.html",
+    "description": "TurboTax technical architecture, discovery workshops, and content strategy documentation.",
+    "keywords": [
+      "turbotax",
+      "discovery",
+      "technical architecture",
+      "content crisis",
+      "on-site discovery",
+      "jenna gardner",
+      "client documents",
+      "intuit"
+    ]
+  },
+  {
+    "title": "AI Offerings",
+    "url": "pages/ai-offerings.html",
+    "description": "Explore DEPT's Adobe-centric AI solutions, including AEM Agents and GenAI integrations.",
+    "keywords": [
+      "ai",
+      "artificial intelligence",
+      "aem agents",
+      "genai",
+      "generative ai",
+      "llm",
+      "adobe sensei",
+      "automation",
+      "machine learning",
+      "offerings",
+      "capabilities"
+    ]
   }
 ]
