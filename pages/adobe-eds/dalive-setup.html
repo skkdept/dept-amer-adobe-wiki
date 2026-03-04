@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>da.live Setup - Adobe Edge Delivery Services Learning Hub</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+      font-size: 0.95rem;
+      color: var(--dept-grey-2);
+    }
+    
+    .breadcrumb a {
+      color: var(--dept-orange);
+    }
+    
+    .learning-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    
+    .learning-content h2 {
+      margin-top: 2.5rem;
+      color: var(--dept-black);
+    }
+    
+    .learning-content h2 + p {
+      font-size: 1.1rem;
+      color: var(--dept-grey-1);
+      line-height: 1.6;
+    }
+    
+    .section-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .section-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--dept-grey-4);
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .section-list li:before {
+      content: '▸';
+      color: var(--dept-orange);
+      font-weight: bold;
+      min-width: 20px;
+    }
+    
+    code {
+      background: var(--dept-white-3);
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: var(--dept-black-1);
+    }
+    
+    .code-block {
+      background: var(--dept-black);
+      color: var(--dept-white-1);
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
+        <span>Adobe Learning Hub</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html#adobe-commerce">Commerce</a></li>
+        <li><a href="../../index.html#adobe-eds">Edge Services</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> / <a href="../../index.html#adobe-eds">Edge Delivery Services</a> / da.live Setup
+  </div>
+
+  <!-- Main Content -->
+  <section class="learning-content">
+    <h1>da.live Setup</h1>
+    <p>Get started with Adobe Edge Delivery Services using the da.live platform. Learn how to set up your first project, configure content delivery, and optimize performance.</p>
+
+    <!-- What is da.live -->
+    <h2>What is da.live?</h2>
+    <p>da.live (Digital Assets live) is Adobe's edge delivery content distribution platform built for exceptional performance. It enables rapid content delivery with built-in performance optimization, instant global distribution, and seamless integration with Adobe's creative tools.</p>
+
+    <!-- Prerequisites -->
+    <h2>Prerequisites</h2>
+    <p>Before starting with da.live, ensure you have:</p>
+    <ul class="section-list">
+      <li><strong>Adobe Account</strong> - Active Adobe Creative Cloud or Enterprise subscription</li>
+      <li><strong>GitHub Account</strong> - For repository management and version control</li>
+      <li><strong>Node.js</strong> - Latest LTS version installed locally</li>
+      <li><strong>Git CLI</strong> - For cloning and managing repositories</li>
+      <li><strong>Text Editor</strong> - VS Code or similar for code editing</li>
+    </ul>
+
+    <!-- Initialization -->
+    <h2>Project Initialization</h2>
+    <p>Get started with da.live using the quickstart template:</p>
+    
+    <h3>Step 1: Create GitHub Repository</h3>
+    <p>Start by creating a new repository on GitHub or clone the Adobe da.live template:</p>
+    <div class="code-block">git clone https://github.com/adobe/da-live-quickstart.git my-project
+cd my-project</div>
+
+    <h3>Step 2: Install AEM CLI</h3>
+    <p>Install the AEM CLI tool for local development:</p>
+    <div class="code-block">npm install -g @adobe/aem-cli</div>
+
+    <h3>Step 3: Install Dependencies</h3>
+    <p>Install all project dependencies:</p>
+    <div class="code-block">npm install</div>
+
+    <h3>Step 4: Configure Environment</h3>
+    <p>Create a <code>.env</code> file with your da.live configuration:</p>
+    <div class="code-block">DA_LIVE_DOMAIN=my-site.da.live
+REPO_NAME=my-repo
+REPO_OWNER=my-github-username
+GITHUB_TOKEN=your_github_token</div>
+
+    <!-- Local Development -->
+    <h2>Local Development</h2>
+    <p>Set up your local development environment:</p>
+    
+    <h3>Start Development Server</h3>
+    <p>Run the local AEM development server:</p>
+    <div class="code-block">aem up</div>
+    
+    <p>This starts a local server at <code>http://localhost:3000</code> with hot reloading enabled.</p>
+
+    <h3>Content Structure</h3>
+    <p>Organize your content in Google Sheets or MS Excel as the content source:</p>
+    <ul class="section-list">
+      <li><strong>Shared Drive</strong> - Authorized Google Drive or SharePoint location</li>
+      <li><strong>Sheet Structure</strong> - Tables define content models and data</li>
+      <li><strong>Metadata</strong> - Include SEO, publishing, and visibility metadata</li>
+    </ul>
+
+    <!-- Content Management -->
+    <h2>Content Management</h2>
+    <p>Manage content through multiple methods:</p>
+    
+    <h3>Spreadsheet-Based Publishing</h3>
+    <p>Content is authored in Google Sheets or Excel and automatically synced to da.live:</p>
+    <div class="code-block"># Push content updates
+aem sync</div>
+
+    <h3>Direct File Editing</h3>
+    <p>Create and edit <code>.md</code> (Markdown) files directly in your repository</p>
+
+    <h3>Bulk Publishing</h3>
+    <p>Publish multiple pages at once using the AEM CLI:</p>
+    <div class="code-block">aem publish --folder /content/pages --recursive</div>
+
+    <!-- Performance Optimization -->
+    <h2>Performance Optimization</h2>
+    <p>da.live automatically optimizes content for edge delivery, but follow these best practices:</p>
+    <ul class="section-list">
+      <li><strong>Image Optimization</strong> - Use WebP and AVIF formats with fallbacks</li>
+      <li><strong>Lazy Loading</strong> - Defer off-screen image loading</li>
+      <li><strong>CSS/JS Bundling</strong> - Minimize and bundle assets</li>
+      <li><strong>Caching Strategy</strong> - Configure edge cache headers appropriately</li>
+      <li><strong>Content Compression</strong> - Enable gzip and brotli compression</li>
+    </ul>
+
+    <!-- Analytics & Monitoring -->
+    <h2>Analytics & Monitoring</h2>
+    <p>Track performance and user behavior:</p>
+    
+    <h3>Performance Metrics</h3>
+    <ul class="section-list">
+      <li><strong>Core Web Vitals</strong> - LCP, FID, CLS metrics from Google</li>
+      <li><strong>Edge Performance</strong> - Request/response times from edge nodes</li>
+      <li><strong>Cache Hit Ratio</strong> - Percentage of requests served from cache</li>
+    </ul>
+
+    <!-- Deployment -->
+    <h2>Deployment Process</h2>
+    <p>Deploy your project to production:</p>
+    
+    <h3>Production Build</h3>
+    <div class="code-block">npm run build</div>
+
+    <h3>Push to main Branch</h3>
+    <p>Commits to your main branch automatically trigger production deployment:</p>
+    <div class="code-block">git add .
+git commit -m "Production update"
+git push origin main</div>
+
+    <h3>Verify Deployment</h3>
+    <p>Check deployment status in the GitHub UI or using the AEM CLI:</p>
+    <div class="code-block">aem status</div>
+
+    <!-- Common Commands -->
+    <h2>Essential da.live Commands</h2>
+    <ul class="section-list">
+      <li><code>aem up</code> - Start local development server</li>
+      <li><code>aem sync</code> - Sync content from Google Sheets</li>
+      <li><code>aem publish</code> - Publish content to production</li>
+      <li><code>aem status</code> - Check deployment and sync status</li>
+      <li><code>npm run build</code> - Build for production</li>
+    </ul>
+
+    <!-- Next Steps -->
+    <h2>Next Steps</h2>
+    <p>After setting up da.live:</p>
+    <ul class="section-list">
+      <li>Explore <a href="universal-editor.html">Universal Editor Setup</a></li>
+      <li>Learn about <a href="migration.html">Automated Migration</a></li>
+      <li>Configure custom domains and SSL</li>
+      <li>Set up monitoring and analytics</li>
+      <li>Create your first content pages</li>
+    </ul>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dept-grey-4);">
+      <a href="../../index.html#adobe-eds" class="btn btn-secondary">Back to Edge Delivery Services</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="content">
+      <div>
+        <h4>Learning Paths</h4>
+        <ul>
+          <li><a href="../../index.html#adobe-commerce">Adobe Commerce</a></li>
+          <li><a href="../../index.html#adobe-eds">Edge Delivery Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://experienceleague.adobe.com" target="_blank">Adobe Experience League</a></li>
+          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community Forum</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
+    </div>
+  </footer>
+</body>
+</html>

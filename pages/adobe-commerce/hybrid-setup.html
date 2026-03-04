@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Hybrid Setup - Adobe Commerce Learning Hub</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+      font-size: 0.95rem;
+      color: var(--dept-grey-2);
+    }
+    
+    .breadcrumb a {
+      color: var(--dept-orange);
+    }
+    
+    .learning-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    
+    .learning-content h2 {
+      margin-top: 2.5rem;
+      color: var(--dept-black);
+    }
+    
+    .learning-content h2 + p {
+      font-size: 1.1rem;
+      color: var(--dept-grey-1);
+      line-height: 1.6;
+    }
+    
+    .section-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .section-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--dept-grey-4);
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .section-list li:before {
+      content: '▸';
+      color: var(--dept-orange);
+      font-weight: bold;
+      min-width: 20px;
+    }
+    
+    code {
+      background: var(--dept-white-3);
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: var(--dept-black-1);
+    }
+    
+    .code-block {
+      background: var(--dept-black);
+      color: var(--dept-white-1);
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
+        <span>Adobe Learning Hub</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html#adobe-commerce">Commerce</a></li>
+        <li><a href="../../index.html#adobe-eds">Edge Services</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> / <a href="../../index.html#adobe-commerce">Adobe Commerce</a> / AEM SDK + CIF Setup
+  </div>
+
+  <!-- Main Content -->
+  <section class="learning-content">
+    <h1>The Accelerated Setup: AEM SDK + CIF 2026</h1>
+    <p>Modern cloud-native development for Adobe Commerce. This guide bridges the gap between classic on-premise setups and the agile, cloud-optimized approach using AEM SDK with the CIF Add-on and Adobe Venia Demo data.</p>
+
+    <!-- Overview -->
+    <h2>Why This Approach?</h2>
+    <p>We've replaced the heavy local Magento installation with the agile Adobe Venia Demo endpoint to accelerate your journey to the "build" phase. This setup gives you:</p>
+    <ul class="section-list">
+      <li><strong>Zero Local Infrastructure</strong> - No Docker containers needed for Magento</li>
+      <li><strong>Instant Product Data</strong> - Connect directly to cloud-hosted demo data</li>
+      <li><strong>Cloud Parity</strong> - Run locally with the same Java 21 and Maven versions as AEM Cloud Service</li>
+      <li><strong>Faster Development Cycles</strong> - Skip local database setup and focus on building</li>
+      <li><strong>Modern Best Practices</strong> - Cloud-native architecture from day one</li>
+    </ul>
+
+    <!-- Phase 1 -->
+    <h2>Phase 1: The Core Runtime</h2>
+    <p>Establish your development foundation with the essential components.</p>
+    
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 1: Secure the SDK</h3>
+    <p>Download the latest AEM SDK (v2026.2.x or higher) from the Adobe Software Distribution portal. This is your local version of AEM Cloud Service.</p>
+    <div class="code-block"># Visit: https://experience.adobe.com/downloads
+# Filter: AEM as a Cloud Service > SDK Downloads
+# Download: aem-sdk-quickstart-2026.2.x.zip</div>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 2: Obtain the CIF Add-on</h3>
+    <p>The CIF (Commerce Integration Framework) Add-on provides the commerce-specific "plumbing" required for seamless product integration.</p>
+    <ul class="section-list">
+      <li>Navigate to Software Distribution Portal</li>
+      <li>Search for "CIF Add-on"</li>
+      <li>Download the latest CIF package (includes .far files)</li>
+      <li>Keep these files accessible for Step 5</li>
+    </ul>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 3: Verify Your Stack</h3>
+    <p>Modernity requires precision. Ensure your machine is running the correct versions:</p>
+    <div class="code-block"># Check Java version (Mandatory for 2026 SDK)
+java -version
+# Output: openjdk version "21.x.x"
+
+# Check Maven version
+mvn -version
+# Output: Apache Maven 3.9.x
+
+# Check Node.js version
+node -v
+# Output: v20.x.x or higher</div>
+
+    <p style="color: var(--dept-error); font-weight: 600; margin-top: 1rem;">⚠️ If versions don't match, update them before proceeding.</p>
+
+    <hr style="margin: 3rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <!-- Phase 2 -->
+    <h2>Phase 2: Deployment & Infrastructure</h2>
+    <p>Set up your local AEM Author environment and inject commerce capabilities.</p>
+    
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 4: Create the Author Environment</h3>
+    <p>Organize and prepare your AEM runtime.</p>
+    
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">4.1 Extract SDK</h4>
+    <div class="code-block">unzip aem-sdk-quickstart-2026.2.x.zip -d /path/to/projects/</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">4.2 Navigate to extracted directory</h4>
+    <div class="code-block">cd aem-sdk-quickstart-2026.2.x/</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">4.3 Rename the JAR</h4>
+    <div class="code-block">mv aem-quickstart-2026.2.x-author.jar aem-author-p4502.jar</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">4.4 Unpack (creates crx-quickstart folder)</h4>
+    <div class="code-block">java -jar aem-author-p4502.jar -unpack</div>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 5: Inject the CIF Components</h3>
+    <p>Before the first boot, prepare the install folder for CIF Add-on auto-injection.</p>
+    
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">5.1 Create install directory</h4>
+    <div class="code-block">mkdir -p crx-quickstart/install</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">5.2 Copy CIF .far files into install folder</h4>
+    <p style="font-size: 0.95rem; color: var(--dept-grey-6); margin: 0.5rem 0; padding-left: 1rem;">These files were obtained in the previous step (Step 2: Obtain the CIF Add-on)</p>
+    <div class="code-block">cp /path/to/cif-addon/*.far crx-quickstart/install/</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">5.3 Verify files are in place</h4>
+    <div class="code-block">ls -la crx-quickstart/install/
+# Output: Should show .far files</div>
+
+    <p>AEM will automatically ingest these during the boot sequence.</p>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 6: Ignite the Instance</h3>
+    <p>Start your development environment and wait for full initialization.</p>
+    
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">6.1 Start AEM Author</h4>
+    <div class="code-block">java -jar aem-author-p4502.jar</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">6.2 Watch for these terminal messages:</h4>
+    <ul class="section-list" style="margin-left: 2rem;">
+      <li>✓ "[FelixStartLevel] Finished initialization"</li>
+      <li>✓ "[CQ Startup] Start level will be raised to 30"</li>
+      <li>✓ Browser auto-opens at http://localhost:4502</li>
+    </ul>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 7: Access the Author</h3>
+    <p>Verify successful installation by logging into the AEM Author UI.</p>
+    <ul class="section-list">
+      <li><strong>URL:</strong> http://localhost:4502</li>
+      <li><strong>Username:</strong> admin</li>
+      <li><strong>Password:</strong> admin</li>
+      <li>Navigate to the main menu and look for <strong>"Commerce"</strong> tab</li>
+      <li>If visible, your CIF Add-on is successfully live ✅</li>
+    </ul>
+
+    <hr style="margin: 3rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <!-- Phase 3 -->
+    <h2>Phase 3: The Storefront Integration</h2>
+    <p>Deploy the Venia storefront and connect to real-time product data.</p>
+    
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 8: Deploy the Venia Storefront</h3>
+    <p>Clone and deploy the AEM CIF Venia Project using the cloud profile.</p>
+    
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">8.1 Clone the Venia project</h4>
+    <div class="code-block">git clone https://github.com/adobe/aem-cif-guides-venia.git
+cd aem-cif-guides-venia/</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">8.2 Quick build and install</h4>
+    <div class="code-block">mvn clean install -PautoInstallSinglePackage -DskipTests</div>
+    
+    <p style="font-size: 0.95rem; color: var(--dept-grey-6); padding-left: 1rem;">💡 <strong>Why skip tests?</strong> We skip tests to avoid Java 21/Mockito compatibility conflicts. This is safe for development environments.</p>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 9: Connect to Demo Data</h3>
+    <p>Instead of a local Magento installation, we're utilizing the Adobe Venia Demo Endpoint for immediate access to high-quality product data.</p>
+    <div class="highlight-box">
+      <strong>Demo GraphQL Endpoint:</strong><br>
+      <code>https://venia.magento.com/graphql</code>
+      <br><br>
+      This endpoint provides real product catalogs with pricing, inventory, and imagery—no local setup required.
+    </div>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 10: Configure the GraphQL Client</h3>
+    <p>Set up AEM to communicate with the demo endpoint.</p>
+    <ol style="list-style: decimal; margin-left: 2rem; margin-bottom: 2rem;">
+      <li>Open the OSGi Web Console: <code>http://localhost:4502/system/console/configMgr</code></li>
+      <li>Search for <code>GraphqlClientImpl~venia</code></li>
+      <li>Configure the factory settings:
+        <div class="code-block" style="margin-top: 1rem;">GraphQL Service URL: https://venia.magento.com/graphql
+Allow HTTP communication: [✓] Checked
+HTTP Client Max Connections: 100
+Request Timeout (ms): 30000</div>
+      </li>
+      <li>Click "Save"</li>
+      <li>Verify the status shows "Active" (green) in the console</li>
+    </ol>
+
+    <hr style="margin: 2rem 0 2rem 0; border: none; border-top: 1px solid var(--dept-grey-4);">
+    <h3>Step 11: Verify the Connection</h3>
+    <p>The moment of truth! Navigate to your Venia storefront and validate that product data is flowing.</p>
+    
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">11.1 Access the Storefront</h4>
+    <div class="code-block">http://localhost:4502/sites.html/content/venia</div>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">11.2 Navigate in the Sites Console</h4>
+    <p style="padding-left: 1rem;">Sites → Venia Demo Store → US → EN → Home</p>
+
+    <p>Open the Home page and you should see:</p>
+    <ul class="section-list">
+      <li>✅ Product grids populated with real data</li>
+      <li>✅ Product images loading from Venia endpoint</li>
+      <li>✅ Pricing and inventory information displayed</li>
+      <li>✅ GraphQL requests flowing to the cloud endpoint</li>
+    </ul>
+
+    <!-- Comparison Table -->
+    <h2>Strategic Comparison: Classic vs. Cloud</h2>
+    <p>See how the modern approach differs from traditional on-premise setups:</p>
+    
+    <div style="overflow-x: auto; margin: 2rem 0;">
+      <table style="width: 100%; border-collapse: collapse; border: 1px solid var(--dept-grey-4);">
+        <thead>
+          <tr style="background: var(--dept-white-3);">
+            <th style="padding: 1rem; text-align: left; border: 1px solid var(--dept-grey-4); font-weight: 600;">Element</th>
+            <th style="padding: 1rem; text-align: left; border: 1px solid var(--dept-grey-4); font-weight: 600;"> "Classic"</th>
+            <th style="padding: 1rem; text-align: left; border: 1px solid var(--dept-grey-4); font-weight: 600;">"Cloud Hybrid" </th>
+            <th style="padding: 1rem; text-align: left; border: 1px solid var(--dept-grey-4); font-weight: 600;">The Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);"><strong>Java Runtime</strong></td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Java 11</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Java 21</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Alignment with AEM Cloud Service parity</td>
+          </tr>
+          <tr style="background: var(--dept-white-3);">
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);"><strong>Commerce Backend</strong></td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Local Docker/VM + Magento</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Remote Demo Endpoint</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Zero local overhead; instant data access</td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);"><strong>Build Profile</strong></td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">classic profile</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Cloud Profile</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Leaner deployment without legacy bloat</td>
+          </tr>
+          <tr style="background: var(--dept-white-3);">
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);"><strong>GraphQL Client</strong></td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">~default client</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">~venia factory client</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Targeted, project-specific API management</td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);"><strong>Setup Time</strong></td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">4-6 hours</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">30-45 minutes</td>
+            <td style="padding: 1rem; border: 1px solid var(--dept-grey-4);">Fast-track to development</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Troubleshooting -->
+    <h2>Troubleshooting</h2>
+    
+    <h3>CIF Add-on Not Loading</h3>
+    <p>Verify the .far files are in the correct location before starting AEM:</p>
+    <div class="code-block">ls -la crx-quickstart/install/*.far
+# Should list CIF .far files</div>
+
+    <h3>GraphQL Connection Failed</h3>
+    <p>Check the OSGi console logs and verify:</p>
+    <ul class="section-list">
+      <li>Endpoint URL is exactly: <code>https://venia.magento.com/graphql</code></li>
+      <li>"Allow HTTP communication" is checked</li>
+      <li>Your machine has internet access to the endpoint</li>
+    </ul>
+
+    <h3>Memory Issues</h3>
+    <p>Increase JVM heap if you experience OutOfMemory errors:</p>
+    <div class="code-block">java -Xmx4g -jar aem-author-p4502.jar</div>
+
+    <!-- Next Steps -->
+    <h2>Next Steps</h2>
+    <ul class="section-list">
+      <li>✅ Explore the Commerce section in AEM Author</li>
+      <li>✅ Create custom product components</li>
+      <li>✅ Learn about <a href="magento-setup.html">Local Magento Setup</a> for advanced scenarios</li>
+      <li>✅ Study the <a href="overview.html">Commerce Overview</a> architecture</li>
+      <li>✅ Deploy to AEM Cloud Service when ready</li>
+    </ul>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dept-grey-4);">
+      <a href="../../index.html#adobe-commerce" class="btn btn-secondary">Back to Adobe Commerce</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="content">
+      <div>
+        <h4>Learning Paths</h4>
+        <ul>
+          <li><a href="../../index.html#adobe-commerce">Adobe Commerce</a></li>
+          <li><a href="../../index.html#adobe-eds">Edge Delivery Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://experienceleague.adobe.com" target="_blank">Adobe Experience League</a></li>
+          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community Forum</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universal Editor Setup - Adobe Edge Delivery Services Learning Hub</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+      font-size: 0.95rem;
+      color: var(--dept-grey-2);
+    }
+    
+    .breadcrumb a {
+      color: var(--dept-orange);
+    }
+    
+    .learning-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    
+    .learning-content h2 {
+      margin-top: 2.5rem;
+      color: var(--dept-black);
+    }
+    
+    .learning-content h2 + p {
+      font-size: 1.1rem;
+      color: var(--dept-grey-1);
+      line-height: 1.6;
+    }
+    
+    .section-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .section-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--dept-grey-4);
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .section-list li:before {
+      content: '▸';
+      color: var(--dept-orange);
+      font-weight: bold;
+      min-width: 20px;
+    }
+    
+    code {
+      background: var(--dept-white-3);
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: var(--dept-black-1);
+    }
+    
+    .code-block {
+      background: var(--dept-black);
+      color: var(--dept-white-1);
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
+        <span>Adobe Learning Hub</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html#adobe-commerce">Commerce</a></li>
+        <li><a href="../../index.html#adobe-eds">Edge Services</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> / <a href="../../index.html#adobe-eds">Edge Delivery Services</a> / Universal Editor Setup
+  </div>
+
+  <!-- Main Content -->
+  <section class="learning-content">
+    <h1>Universal Editor Setup</h1>
+    <p>Master Adobe's Universal Editor for seamless content creation and visual editing. Enable non-technical teams to manage content with powerful authoring capabilities.</p>
+
+    <!-- What is Universal Editor -->
+    <h2>What is Universal Editor?</h2>
+    <p>The Universal Editor is Adobe's next-generation editing platform that provides a unified, visual content editing experience. It's designed to work across different content sources and enables front-end developers and content authors to collaborate seamlessly.</p>
+
+    <!-- Key Features -->
+    <h2>Key Features</h2>
+    <ul class="section-list">
+      <li><strong>Visual Editing</strong> - WYSIWYG interface for content management</li>
+      <li><strong>Flexible Content Models</strong> - Support for custom content structures</li>
+      <li><strong>Real-time Preview</strong> - See changes instantly across devices</li>
+      <li><strong>Collaboration</strong> - Multiple authors can work simultaneously</li>
+      <li><strong>Version Control</strong> - Track changes and revert when needed</li>
+      <li><strong>Extensibility</strong> - Customize with custom components and plugins</li>
+    </ul>
+
+    <!-- Prerequisites -->
+    <h2>Prerequisites</h2>
+    <p>Ensure you have the following set up:</p>
+    <ul class="section-list">
+      <li><strong>AEM Instance</strong> - Running AEM as a Cloud Service or on-premises</li>
+      <li><strong>Universal Editor Service</strong> - Deployed and accessible</li>
+      <li><strong>Adobe IMS Access</strong> - Valid Adobe organization</li>
+      <li><strong>Author Permissions</strong> - Content authoring rights</li>
+      <li><strong>Browser Support</strong> - Chrome, Firefox, Safari, or Edge (latest versions)</li>
+    </ul>
+
+    <!-- Installation & Configuration -->
+    <h2>Installation & Configuration</h2>
+    
+    <h3>Step 1: Enable Universal Editor</h3>
+    <p>Configure Universal Editor in your AEM Cloud Service instance:</p>
+    <div class="code-block"># Update pom.xml to include Universal Editor dependencies
+&lt;dependency&gt;
+  &lt;groupId&gt;com.adobe.aem&lt;/groupId&gt;
+  &lt;artifactId&gt;aem-universal-editor-core&lt;/artifactId&gt;
+  &lt;version&gt;1.x.x&lt;/version&gt;
+&lt;/dependency&gt;</div>
+
+    <h3>Step 2: Configure Content Source</h3>
+    <p>Specify where your content lives (Google Sheets, AEM, or custom backend):</p>
+    <div class="code-block">{
+  "contentSource": "https://your-content-api.com/api",
+  "authToken": "your_auth_token",
+  "model": "page",
+  "fields": [
+    {"name": "title", "type": "string"},
+    {"name": "description", "type": "text"},
+    {"name": "image", "type": "image"}
+  ]
+}</div>
+
+    <h3>Step 3: Create Editable Components</h3>
+    <p>Define which components are editable in the Universal Editor:</p>
+    <div class="code-block">// components/text/text.js
+export default {
+  name: 'Text Block',
+  label: 'Text Block',
+  fields: [
+    {
+      name: 'content',
+      type: 'richtext',
+      label: 'Content'
+    }
+  ]
+}</div>
+
+    <!-- Editor Setup -->
+    <h2>Setting Up the Editor Interface</h2>
+    
+    <h3>Configure Authoring Experience</h3>
+    <p>Customize the visual editing interface for your team:</p>
+    <ul class="section-list">
+      <li><strong>Property Panel</strong> - Configure fields shown to authors</li>
+      <li><strong>Component Library</strong> - Organize available components</li>
+      <li><strong>Presets</strong> - Save common configurations</li>
+      <li><strong>Workflows</strong> - Define publish and approval flows</li>
+    </ul>
+
+    <h3>Create Content Models</h3>
+    <p>Define the structure of your content:</p>
+    <div class="code-block">const pageModel = {
+  title: {
+    type: 'string',
+    required: true,
+    maxLength: 100
+  },
+  slug: {
+    type: 'string',
+    pattern: '^[a-z0-9-]+$'
+  },
+  content: {
+    type: 'array',
+    items: {
+      type: 'object',
+      properties: {
+        type: 'string',
+        content: 'string'
+      }
+    }
+  },
+  seoMetadata: {
+    type: 'object',
+    properties: {
+      description: 'string',
+      keywords: 'array'
+    }
+  }
+}</div>
+
+    <!-- User Management -->
+    <h2>User & Permission Management</h2>
+    <p>Control who can edit and publish content:</p>
+    
+    <h3>User Roles</h3>
+    <ul class="section-list">
+      <li><strong>Admin</strong> - Full system access and configuration</li>
+      <li><strong>Editor</strong> - Create and edit content</li>
+      <li><strong>Reviewer</strong> - Approve content before publishing</li>
+      <li><strong>Publisher</strong> - Publish approved content</li>
+      <li><strong>Viewer</strong> - Read-only access</li>
+    </ul>
+
+    <h3>Permission Configuration</h3>
+    <div class="code-block"># Grant editor permissions to a user
+aem users grant-role \
+  --user user@example.com \
+  --role editor \
+  --resource /content/pages/*</div>
+
+    <!-- Publishing Workflow -->
+    <h2>Publishing & Workflow</h2>
+    <p>Manage your content publication process:</p>
+    
+    <h3>Draft to Publish Workflow</h3>
+    <ol style="list-style: decimal; margin-left: 2rem; margin-bottom: 2rem;">
+      <li>Author creates/edits content in the visual editor</li>
+      <li>Content is saved as draft automatically</li>
+      <li>Author requests review of content</li>
+      <li>Reviewer approves or requests changes</li>
+      <li>Publisher publishes approved content</li>
+      <li>Content is deployed to Edge Delivery Services</li>
+    </ol>
+
+    <h3>Publish Changes</h3>
+    <div class="code-block"># Programmatically publish content
+curl -X POST https://your-instance.aem.cloud/api/publish \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "path": "/content/pages/my-page",
+    "recursive": true
+  }'</div>
+
+    <!-- Customization & Extensions -->
+    <h2>Customization</h2>
+    <p>Extend the Universal Editor with custom functionality:</p>
+    
+    <h3>Custom Components</h3>
+    <p>Create custom editable components tailored to your needs:</p>
+    <div class="code-block">// components/hero/hero.js
+export default {
+  name: 'Hero Section',
+  label: 'Hero',
+  fields: [
+    {name: 'heading', type: 'string', label: 'Heading'},
+    {name: 'subheading', type: 'text', label: 'Subheading'},
+    {name: 'cta', type: 'string', label: 'CTA Text'},
+    {name: 'backgroundImage', type: 'image', label: 'Background'}
+  ]
+}</div>
+
+    <!-- Best Practices -->
+    <h2>Best Practices</h2>
+    <ul class="section-list">
+      <li><strong>Clear Field Labels</strong> - Use descriptive labels and help text</li>
+      <li><strong>Validation</strong> - Prevent invalid content with field validation</li>
+      <li><strong>Preview Devices</strong> - Test content on mobile, tablet, and desktop</li>
+      <li><strong>SEO Optimization</strong> - Include SEO fields in content models</li>
+      <li><strong>Version History</strong> - Regularly back up and archive old versions</li>
+      <li><strong>Performance</strong> - Optimize media assets before upload</li>
+    </ul>
+
+    <!-- Troubleshooting -->
+    <h2>Troubleshooting</h2>
+    <p>Common issues and solutions:</p>
+    
+    <h3>Content Not Appearing</h3>
+    <p>Ensure your content model matches the expected structure and all required fields are populated.</p>
+
+    <h3>Publishing Delays</h3>
+    <p>Check AEM Cloud Service job queues and review deployment status in Cloud Manager.</p>
+
+    <!-- Next Steps -->
+    <h2>Next Steps</h2>
+    <ul class="section-list">
+      <li>Learn about <a href="dalive-setup.html">da.live Setup</a> for content delivery</li>
+      <li>Explore <a href="migration.html">Automated Migration</a> strategies</li>
+      <li>Create your first content models</li>
+      <li>Invite team members and set up permissions</li>
+      <li>Build custom components for your brand</li>
+    </ul>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dept-grey-4);">
+      <a href="../../index.html#adobe-eds" class="btn btn-secondary">Back to Edge Delivery Services</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="content">
+      <div>
+        <h4>Learning Paths</h4>
+        <ul>
+          <li><a href="../../index.html#adobe-commerce">Adobe Commerce</a></li>
+          <li><a href="../../index.html#adobe-eds">Edge Delivery Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://experienceleague.adobe.com" target="_blank">Adobe Experience League</a></li>
+          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community Forum</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
+    </div>
+  </footer>
+</body>
+</html>

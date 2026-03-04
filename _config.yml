@@ -1,0 +1,31 @@
+# GitHub Pages Configuration
+# Disable Jekyll processing for static site
+
+# Site metadata
+title: Adobe Learning Hub
+description: DEPT branded learning website for Adobe Commerce and Edge Delivery Services
+author: DEPT® Agency
+timezone: America/Chicago
+
+# Build settings
+markdown: kramdown
+theme: null
+
+# GitHub Pages settings
+future: false
+permalink: /:year/:month/:day/:title/
+
+# Exclude unnecessary files
+exclude:
+  - .git
+  - .gitignore
+  - node_modules
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .DS_Store
+
+# Include all files
+include:
+  - .gitignore
+  - .well-known

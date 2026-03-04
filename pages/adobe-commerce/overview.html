@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adobe Commerce Overview - Adobe Commerce Learning Hub</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+      font-size: 0.95rem;
+      color: var(--dept-grey-2);
+    }
+    
+    .breadcrumb a {
+      color: var(--dept-orange);
+    }
+    
+    .learning-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    
+    .learning-content h2 {
+      margin-top: 2.5rem;
+      color: var(--dept-black);
+    }
+    
+    .learning-content h2 + p {
+      font-size: 1.1rem;
+      color: var(--dept-grey-1);
+      line-height: 1.6;
+    }
+    
+    .section-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .section-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--dept-grey-4);
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .section-list li:before {
+      content: '▸';
+      color: var(--dept-orange);
+      font-weight: bold;
+      min-width: 20px;
+    }
+    
+    .highlight-box {
+      background: var(--dept-white-3);
+      border-left: 4px solid var(--dept-orange);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+    
+    .highlight-box strong {
+      color: var(--dept-black);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
+        <span>Adobe Learning Hub</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html#adobe-commerce">Commerce</a></li>
+        <li><a href="../../index.html#adobe-eds">Edge Services</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> / <a href="../../index.html#adobe-commerce">Adobe Commerce</a> / Overview
+  </div>
+
+  <!-- Main Content -->
+  <section class="learning-content">
+    <h1>Adobe Commerce Overview</h1>
+    <p>Comprehensive introduction to Adobe Commerce, from core architecture to advanced features. Everything you need to understand this powerful e-commerce platform.</p>
+
+    <!-- What is Adobe Commerce -->
+    <h2>What is Adobe Commerce?</h2>
+    <p>Adobe Commerce (formerly Magento) is an enterprise-grade e-commerce platform that powers some of the world's leading online retailers. It's built on a modular architecture that allows complete customization and scalability.</p>
+    
+    <div class="highlight-box">
+      <strong>Key Features:</strong> Advanced product catalogs, flexible promotions, multi-channel selling, sophisticated analytics, API-first architecture, progressive web application (PWA) support, and enterprise security.
+    </div>
+
+    <!-- Core Architecture -->
+    <h2>Core Architecture</h2>
+    <p>As an AEM developer, you need to understand two interconnected systems: <strong>AEM (content management)</strong> and <strong>Adobe Commerce/Magento (e-commerce backend)</strong>. The CIF Add-on is the bridge between them.</p>
+    
+    <!-- AEM Commerce Integration Diagram -->
+    <h3>🏗️ How AEM Talks to Magento</h3>
+    <p>The Commerce Integration Framework (CIF) is the communication layer. Here's how the tiers connect:</p>
+    
+    <div style="background: var(--dept-white-3); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+      <!-- Architecture diagram -->
+      <div style="max-width: 100%;">
+        <!-- Top Row: Author and Publisher -->
+        <div style="display: flex; gap: 2rem; align-items: stretch; margin-bottom: 2rem; justify-content: space-between;">
+          <!-- AEM Author -->
+          <div style="flex: 1; min-width: 200px; background: #FFE8D6; border: 2px solid #FF4901; border-radius: 6px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 0.5rem;">📝</div>
+            <div style="font-weight: 600; color: #FF4901;">AEM Author</div>
+            <div style="font-size: 12px; color: #666; margin-top: 0.5rem;">Content editors<br/>create & manage pages</div>
+          </div>
+          
+          <!-- Arrow showing publish flow -->
+          <div style="display: flex; align-items: center; font-size: 24px; color: #FF4901;">→</div>
+          
+          <!-- AEM Publisher -->
+          <div style="flex: 1; min-width: 200px; background: #FFE8D6; border: 2px solid #FF4901; border-radius: 6px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 0.5rem;">🌐</div>
+            <div style="font-weight: 600; color: #FF4901;">AEM Publisher</div>
+            <div style="font-size: 12px; color: #666; margin-top: 0.5rem;">Live website<br/>Serves visitors</div>
+          </div>
+        </div>
+        
+        <!-- Both connect down to CIF and Magento -->
+        <div style="display: flex; gap: 2rem; align-items: stretch; flex-wrap: wrap;">
+          <!-- CIF Bridge (spans both) -->
+          <div style="flex: 1; min-width: 300px; background: #E8F4FF; border: 2px solid #0066CC; border-radius: 6px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 0.5rem;">🔗</div>
+            <div style="font-weight: 600; color: #0066CC;">CIF Add-on (in AEM)</div>
+            <div style="font-size: 12px; color: #666; margin-top: 0.5rem;">GraphQL bridge<br/>Translates AEM requests<br/>to Magento queries</div>
+          </div>
+          
+          <!-- Magento Backend -->
+          <div style="flex: 1; min-width: 300px; background: #E8FFE8; border: 2px solid #00AA00; border-radius: 6px; padding: 1.5rem; text-align: center;">
+            <div style="font-size: 32px; margin-bottom: 0.5rem;">🛍️</div>
+            <div style="font-weight: 600; color: #00AA00;">Adobe Commerce<br/>(Magento)</div>
+            <div style="font-size: 12px; color: #666; margin-top: 0.5rem;">Product catalog<br/>Inventory, pricing, orders</div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="background: #FFF3E0; border-left: 4px solid #FF4901; padding: 1.5rem; border-radius: 4px; margin-top: 2rem;">
+        <strong style="color: #FF4901; display: block; margin-bottom: 1rem;">Key Architecture Points:</strong>
+        <div style="font-size: 13px; line-height: 1.8; color: #333;">
+          <strong>Author Workflow:</strong> Editor opens Commerce tile → CIF queries Magento via GraphQL → Editor selects products → Author enriches with copy/layouts → Publishes to Publisher<br/><br/>
+          <strong>Live Website (Publisher):</strong> Visitor loads product page → Page content is (authored & cached) → CIF queries Magento in real-time for current prices/inventory → Visitor sees live product info<br/><br/>
+          <strong>Critical Difference:</strong> Author sees cached product data. Publisher always shows fresh data from Magento to visitors via CIF.
+        </div>
+      </div>
+    </div>
+    
+    <h3 style="margin-top: 2rem;">Key Tech Details (For AEM Developers)</h3>
+    <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+      <tbody>
+        <tr style="border-bottom: 1px solid #DDD;">
+          <td style="padding: 1.5rem; width: 25%; vertical-align: top;">
+            <span style="color: #FF4901; font-weight: 600; margin-right: 0.5rem;">▸</span>
+            <strong style="color: #333;">GraphQL is the API</strong>
+          </td>
+          <td style="padding: 1.5rem; width: 75%; vertical-align: top; color: #666;">
+            Magento exposes a GraphQL API that CIF uses to fetch data. You don't write REST calls; CIF handles the GraphQL.
+          </td>
+        </tr>
+        <tr style="border-bottom: 1px solid #DDD;">
+          <td style="padding: 1.5rem; width: 25%; vertical-align: top;">
+            <span style="color: #FF4901; font-weight: 600; margin-right: 0.5rem;">▸</span>
+            <strong style="color: #333;">CIF is JavaScript-based</strong>
+          </td>
+          <td style="padding: 1.5rem; width: 75%; vertical-align: top; color: #666;">
+            The CIF client library (running in AEM) makes GraphQL requests to Magento. You never talk to Magento directly from AEM code.
+          </td>
+        </tr>
+        <tr style="border-bottom: 1px solid #DDD;">
+          <td style="padding: 1.5rem; width: 25%; vertical-align: top;">
+            <span style="color: #FF4901; font-weight: 600; margin-right: 0.5rem;">▸</span>
+            <strong style="color: #333;">No database connections needed</strong>
+          </td>
+          <td style="padding: 1.5rem; width: 75%; vertical-align: top; color: #666;">
+            AEM doesn't connect to Magento's MySQL database. Everything goes through the GraphQL API. This is HUGE for security and scalability.
+          </td>
+        </tr>
+        <tr style="border-bottom: 1px solid #DDD;">
+          <td style="padding: 1.5rem; width: 25%; vertical-align: top;">
+            <span style="color: #FF4901; font-weight: 600; margin-right: 0.5rem;">▸</span>
+            <strong style="color: #333;">Real-time data</strong>
+          </td>
+          <td style="padding: 1.5rem; width: 75%; vertical-align: top; color: #666;">
+            Every time an author browses products, CIF queries live data. Prices, inventory, and availability are always current.
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 1.5rem; width: 25%; vertical-align: top;">
+            <span style="color: #FF4901; font-weight: 600; margin-right: 0.5rem;">▸</span>
+            <strong style="color: #333;">Caching layer</strong>
+          </td>
+          <td style="padding: 1.5rem; width: 75%; vertical-align: top; color: #666;">
+            AEM can cache GraphQL responses to reduce calls to Magento, improving performance.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h3>📋 GraphQL Examples: How CIF Talks to Magento</h3>
+    <p>When you open the Commerce tile in AEM, here are the actual GraphQL queries CIF sends to Magento:</p>
+    
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">Example 1: Get All Products in a Category</h4>
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0.5rem 0;"><strong>Endpoint:</strong> <code>POST https://your-magento-store.com/graphql</code></p>
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0;"><strong>Request Body:</strong></p>
+    <div class="code-block">query {
+  products(filter: {category_id: {eq: "5"}}, pageSize: 20) {
+    items {
+      id
+      name
+      sku
+      url_key
+      price {
+        regularPrice {
+          amount {
+            value
+            currency
+          }
+        }
+      }
+      description {
+        html
+      }
+      image {
+        url
+        label
+      }
+      stock_status
+    }
+  }
+}</div>
+    
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0.5rem 0;"><strong>Response:</strong></p>
+    <div class="code-block">{
+  "data": {
+    "products": {
+      "items": [
+        {
+          "id": "1234",
+          "name": "Wireless Headphones",
+          "sku": "WH-1000XM4",
+          "url_key": "wireless-headphones",
+          "price": {
+            "regularPrice": {
+              "amount": {
+                "value": 349.99,
+                "currency": "USD"
+              }
+            }
+          },
+          "description": {
+            "html": "<p>Premium noise-canceling headphones...</p>"
+          },
+          "image": {
+            "url": "https://magento.com/media/catalog/product/w/i/wireless-headphones.jpg",
+            "label": "Wireless Headphones"
+          },
+          "stock_status": "IN_STOCK"
+        },
+        {
+          "id": "1235",
+          "name": "Bluetooth Speaker",
+          "sku": "BS-5000",
+          "url_key": "bluetooth-speaker",
+          "price": {
+            "regularPrice": {
+              "amount": {
+                "value": 129.99,
+                "currency": "USD"
+              }
+            }
+          },
+          "description": {
+            "html": "<p>Portable Bluetooth speaker...</p>"
+          },
+          "image": {
+            "url": "https://magento.com/media/catalog/product/b/t/bluetooth-speaker.jpg",
+            "label": "Bluetooth Speaker"
+          },
+          "stock_status": "IN_STOCK"
+        }
+      ]
+    }
+  }
+}</div>
+    <p style="font-size: 12px; color: #666; margin-top: 0.5rem;">💡 <strong>How AEM knows the category:</strong> The category ID "5" comes from your AEM component's authored properties. When an author places a "Featured Products" component on a page, they configure it via a dialog box where they select the Magento category. AEM stores this as a property (e.g., <code>categoryId: "5"</code>), and CIF uses it to build the GraphQL query dynamically.</p>
+    <p style="font-size: 12px; color: #666; margin-top: 0.5rem;"><strong>Example Component Dialog:</strong> Author clicks "Configure" on the Products component → Sees a field "Select Category" → Picks "Electronics" from a dropdown (which maps to ID 5 in Magento) → Component now queries that category every time the page is visited.</p>
+
+    <h3>🛠️ AEM Component Example: Featured Products</h3>
+    <p>Here's what a real AEM component structure looks like that powers the category query:</p>
+
+    <h4 style="font-size: 0.95rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">1. Component Template (FeaturedProducts.html - HTL)</h4>
+    <div class="code-block">&lt;div data-sly-use.model="com.mycompany.commerce.models.FeaturedProducts"
+     data-sly-use.wcmmode="com.adobe.cq.wcm.core.components.models.edit.EditorResourceTypes"
+     class="featured-products"&gt;
+
+  &lt;h2&gt;${model.title}&lt;/h2&gt;
+
+  &lt;div class="products-grid"&gt;
+    &lt;div data-sly-repeat.product="${model.products}" class="product-card"&gt;
+      &lt;img src="${product.imageUrl}" alt="${product.name}" /&gt;
+      &lt;h3&gt;${product.name}&lt;/h3&gt;
+      &lt;p class="price"&gt;$${product.price}&lt;/p&gt;
+      &lt;a href="${product.productUrl}" class="btn"&gt;View Product&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</div>
+
+    <h4 style="font-size: 0.95rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">2. Java Backend Model (FeaturedProducts.java)</h4>
+    <div class="code-block">package com.mycompany.commerce.models;
+
+import com.adobe.cq.commerce.core.components.client.MagentoGraphqlClient;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import java.util.List;
+
+@Model(adaptables = SlingHttpServletRequest.class)
+public class FeaturedProducts {
+  
+  @OSGiService
+  private MagentoGraphqlClient cifClient;
+  
+  @ValueMapValue
+  private String categoryId;  // Comes from dialog config
+  
+  @ValueMapValue
+  private String title;
+  
+  @ValueMapValue(defaultValue = "12")
+  private int pageSize;
+  
+  private List&lt;Product&gt; products;
+  
+  @PostConstruct
+  protected void init() {
+    // CIF client queries Magento with categoryId
+    this.products = cifClient.queryProducts(
+      categoryId, 
+      pageSize
+    );
+  }
+  
+  public List&lt;Product&gt; getProducts() {
+    return products;
+  }
+  
+  public String getTitle() {
+    return title;
+  }
+}</div>
+
+    <h4 style="font-size: 0.95rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">3. Component Dialog (.content.xml)</h4>
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin-bottom: 0.5rem;"><strong>This is where authors set the category:</strong></p>
+    <div class="code-block">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Component"&gt;
+    
+    &lt;cq:dialog jcr:primaryType="nt:unstructured"&gt;
+        &lt;content jcr:primaryType="nt:unstructured"&gt;
+            &lt;items jcr:primaryType="nt:unstructured"&gt;
+                &lt;title jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                    fieldLabel="Component Title"
+                    name="./title"/&gt;
+                
+                &lt;categoryId jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                    fieldLabel="Select Magento Category"
+                    name="./categoryId"&gt;
+                    &lt;items jcr:primaryType="nt:unstructured"&gt;
+                        &lt;electronics jcr:primaryType="nt:unstructured"
+                            text="Electronics"
+                            value="5"/&gt;
+                        &lt;clothing jcr:primaryType="nt:unstructured"
+                            text="Clothing"
+                            value="12"/&gt;
+                        &lt;home jcr:primaryType="nt:unstructured"
+                            text="Home &amp; Garden"
+                            value="18"/&gt;
+                    &lt;/items&gt;
+                &lt;/categoryId&gt;
+                
+                &lt;pageSize jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                    fieldLabel="Number of Products"
+                    name="./pageSize"
+                    value="12"/&gt;
+            &lt;/items&gt;
+        &lt;/content&gt;
+    &lt;/cq:dialog&gt;
+&lt;/jcr:root&gt;</div>
+
+    <h4 style="font-size: 0.95rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">4. Component Structure in AEM</h4>
+    <div class="code-block">/apps/mycompany/components/featuredproducts
+  ├── FeaturedProducts.html (HTL template)
+  ├── FeaturedProducts.java (Sling Model)
+  ├── _cq_dialog.xml (Edit dialog config)
+  ├── _cq_design_dialog.xml (Design dialog)
+  └── css/featuredproducts.css</div>
+
+    <h4 style="font-size: 0.95rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">5. What Author Sees in AEM Editor</h4>
+    <div style="background: #F9F9F9; border: 1px solid #DDD; padding: 1.5rem; border-radius: 6px; margin: 1rem 0;">
+      <p style="font-weight: 600; margin-bottom: 1rem; color: #000;">Author clicks "Edit" on component:</p>
+      <div style="background: white; padding: 1rem; border: 1px solid #CCC; border-radius: 4px; margin-bottom: 0.5rem;">
+        <label style="display: block; margin-bottom: 0.75rem;">
+          <strong>Component Title:</strong><br/>
+          <input type="text" value="Featured Electronics" style="width: 100%; padding: 0.5rem; border: 1px solid #CCC; border-radius: 3px;"/>
+        </label>
+        <label style="display: block; margin-bottom: 0.75rem;">
+          <strong>Select Magento Category:</strong><br/>
+          <select style="width: 100%; padding: 0.5rem; border: 1px solid #CCC; border-radius: 3px;">
+            <option>-- Choose Category --</option>
+            <option selected>Electronics (ID: 5)</option>
+            <option>Clothing (ID: 12)</option>
+            <option>Home &amp; Garden (ID: 18)</option>
+          </select>
+        </label>
+        <label style="display: block; margin-bottom: 0.75rem;">
+          <strong>Number of Products:</strong><br/>
+          <input type="number" value="12" style="width: 100%; padding: 0.5rem; border: 1px solid #CCC; border-radius: 3px;"/>
+        </label>
+      </div>
+    </div>
+
+    <h4 style="font-size: 0.95rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">6. The Data Flow</h4>
+    <div style="background: #FFF3E0; border-left: 4px solid #FF4901; padding: 1.5rem; border-radius: 4px;">
+      <div style="font-size: 13px; line-height: 1.8; color: #333;">
+        <strong style="color: #FF4901;">Author configures:</strong><br/>
+        Sets <code>categoryId="5"</code> in dialog (stored in AEM JCR)<br/><br/>
+        
+        <strong style="color: #FF4901;">AEM renders page:</strong><br/>
+        HTL template invokes Java model → <code>FeaturedProducts.java</code> reads <code>@ValueMapValue categoryId</code><br/><br/>
+        
+        <strong style="color: #FF4901;">CIF intercepts:</strong><br/>
+        Java model calls <code>cifClient.queryProducts("5", 12)</code> (CIF client from Adobe)<br/><br/>
+        
+        <strong style="color: #FF4901;">GraphQL sent to Magento:</strong><br/>
+        <code>query { products(filter: {category_id: {eq: "5"}}, pageSize: 12) { ... } }</code><br/><br/>
+        
+        <strong style="color: #FF4901;">Result:</strong><br/>
+        HTML renders with live product data from Magento
+      </div>
+    </div>
+    
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">Example 2: Get a Single Product with All Details</h4>
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0.5rem 0;"><strong>Endpoint:</strong> <code>POST https://your-magento-store.com/graphql</code></p>
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0;"><strong>Request Body:</strong></p>
+    <div class="code-block">query {
+  products(filter: {sku: {eq: "TECH-4091"}}) {
+    items {
+      id
+      name
+      sku
+      description {
+        html
+      }
+      price {
+        regularPrice {
+          amount {
+            value
+            currency
+          }
+        }
+      }
+      image {
+        url
+      }
+      attributes {
+        attribute_code
+        attribute_label
+        value
+      }
+      stock_item {
+        qty
+        is_in_stock
+      }
+    }
+  }
+}</div>
+    
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0.5rem 0;"><strong>Response:</strong></p>
+    <div class="code-block">{
+  "data": {
+    "products": {
+      "items": [
+        {
+          "id": "5678",
+          "name": "Professional Laptop Stand",
+          "sku": "TECH-4091",
+          "description": {
+            "html": "<p>Adjustable aluminum laptop stand...</p>"
+          },
+          "price": {
+            "regularPrice": {
+              "amount": {
+                "value": 79.99,
+                "currency": "USD"
+              }
+            }
+          },
+          "image": {
+            "url": "https://magento.com/media/catalog/product/l/a/laptop-stand.jpg"
+          },
+          "attributes": [
+            {
+              "attribute_code": "color",
+              "attribute_label": "Color",
+              "value": "Silver"
+            },
+            {
+              "attribute_code": "material",
+              "attribute_label": "Material",
+              "value": "Aluminum"
+            }
+          ],
+          "stock_item": {
+            "qty": 127,
+            "is_in_stock": true
+          }
+        }
+      ]
+    }
+  }
+}</div>
+    <p style="font-size: 12px; color: #666; margin-top: 0.5rem;">💡 <strong>What it does:</strong> Author clicks on a specific product → CIF sends query by SKU → Magento returns all details including attributes, exact stock quantity, and description. Author sees everything and can decide whether to feature this product.</p>
+
+    <h4 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; padding-left: 1rem;">Example 3: Search Products by Name</h4>
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0.5rem 0;"><strong>Endpoint:</strong> <code>POST https://your-magento-store.com/graphql</code></p>
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0;"><strong>Request Body:</strong></p>
+    <div class="code-block">query {
+  products(search: "wireless headphones", pageSize: 10) {
+    total_count
+    items {
+      id
+      name
+      sku
+      price {
+        regularPrice {
+          amount {
+            value
+          }
+        }
+      }
+      image {
+        url
+      }
+    }
+  }
+}</div>
+    
+    <p style="padding-left: 1rem; font-size: 12px; color: #666; margin: 0.5rem 0;"><strong>Response:</strong></p>
+    <div class="code-block">{
+  "data": {
+    "products": {
+      "total_count": 3,
+      "items": [
+        {
+          "id": "1234",
+          "name": "Wireless Headphones Premium Edition",
+          "sku": "WH-1000XM4",
+          "price": {
+            "regularPrice": {
+              "amount": {
+                "value": 349.99
+              }
+            }
+          },
+          "image": {
+            "url": "https://magento.com/media/catalog/product/w/h/wireless-headphones.jpg"
+          }
+        },
+        {
+          "id": "1245",
+          "name": "Wireless Headphones Budget",
+          "sku": "WH-500",
+          "price": {
+            "regularPrice": {
+              "amount": {
+                "value": 49.99
+              }
+            }
+          },
+          "image": {
+            "url": "https://magento.com/media/catalog/product/w/h/wireless-budget.jpg"
+          }
+        }
+      ]
+    }
+  }
+}</div>
+    <p style="font-size: 12px; color: #666; margin-top: 0.5rem;">💡 <strong>What it does:</strong> Author types "wireless headphones" in search → CIF sends GraphQL search query → Magento returns 3 matching products instantly. Author can browse and pick the best one for their content.</p>
+
+    <h3>🔄 What Happens When Magento Data Changes?</h3>
+    <p>After an author creates a page with product data in AEM, what happens if that product's price or inventory changes in Magento?</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+      <!-- Scenario 1: On Page Load -->
+      <div style="background: #E8F4FF; border: 2px solid #0066CC; border-radius: 6px; padding: 1.5rem;">
+        <strong style="color: #0066CC; display: block; margin-bottom: 1rem;">Scenario: Visitor Loads Page</strong>
+        <div style="font-size: 13px; line-height: 1.8;">
+          <strong>1. Visitor opens product page on Publisher</strong><br/>
+          The page already has the product title, description, image that the author added<br/><br/>
+          
+          <strong>2. CIF client-side code runs</strong><br/>
+          It makes a fresh GraphQL query to Magento for current price & inventory<br/><br/>
+          
+          <strong>3. Real-time data replaces cached data</strong><br/>
+          Price, stock status, discounts are ALWAYS fresh from Magento<br/><br/>
+          
+          <strong>Result:</strong> <span style="color: #00AA00; font-weight: 600;">✓ Visitor always sees current pricing and stock</span>
+        </div>
+      </div>
+      
+      <!-- Scenario 2: In AEM Author -->
+      <div style="background: #FFF3E0; border: 2px solid #FF9800; border-radius: 6px; padding: 1.5rem;">
+        <strong style="color: #FF9800; display: block; margin-bottom: 1rem;">Scenario: Author Updates Page</strong>
+        <div style="font-size: 13px; line-height: 1.8;">
+          <strong>1. Author clicks on product component</strong><br/>
+          Wants to check current product data<br/><br/>
+          
+          <strong>2. CIF re-queues Magento</strong><br/>
+          Makes a fresh GraphQL call to get latest product info<br/><br/>
+          
+          <strong>3. Data shown to author is refreshed</strong><br/>
+          Author sees: new price, new stock, new description if anything changed<br/><br/>
+          
+          <strong>Result:</strong> <span style="color: #FF9800; font-weight: 600;">⚠️ Author makes manual decision to update the page</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFE8D6; border-left: 4px solid #FF4901; padding: 1.5rem; margin: 2rem 0; border-radius: 4px;">
+      <strong style="color: #FF4901; display: block; margin-bottom: 1rem;">Key Insight: Content vs. Data</strong>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 1.8;">
+        <li style="padding: 0.5rem 0;"><strong>Authored content stays the same:</strong> Copy, images, layouts, CTAs that the author wrote in AEM don't change</li>
+        <li style="padding: 0.5rem 0;"><strong>Live product data refreshes:</strong> Every time a visitor lands on the page, it queries Magento for current price, inventory, availability</li>
+        <li style="padding: 0.5rem 0;"><strong>Author sees staleness:</strong> If the author comes back days later, they see old data because CIF only refreshes when explicitly browsing. But visitors always get fresh data.</li>
+        <li style="padding: 0.5rem 0;"><strong>No automatic re-publishing:</strong> If product gets discontinued or price drops 50%, pages don't auto-update. Author needs to manually check and make decisions.</li>
+      </ul>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Real-World Example: Price Drop</h3>
+    <div style="background: var(--dept-white-3); padding: 1.5rem; border-radius: 6px; margin: 1rem 0;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div>
+          <strong style="color: #0066CC;">Author's Perspective</strong>
+          <div style="font-size: 12px; color: #666; margin-top: 0.5rem;">
+            <strong>Day 1:</strong> Creates page with "Laptop - $999"<br/>
+            <strong>Day 5:</strong> Product drops to $699 in Magento<br/>
+            <strong>Day 10:</strong> Author opens page in AEM → Still shows "$999" in the authored content<br/>
+            <strong>Action:</strong> Author must manually update or refresh the product reference
+          </div>
+        </div>
+        <div>
+          <strong style="color: #00AA00;">Visitor's Perspective</strong>
+          <div style="font-size: 12px; color: #666; margin-top: 0.5rem;">
+            <strong>Day 1:</strong> Visitor lands → Sees $999 (correct)<br/>
+            <strong>Day 5:</strong> Price drops in Magento<br/>
+            <strong>Day 10:</strong> Visitor lands → CIF queries Magento → Sees $699 (current!)<br/>
+            <strong>Result:</strong> ✓ Visitor always sees correct price
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h3 style="margin-top: 2rem;">🛡️ Cache Invalidation Strategy</h3>
+    <p>To keep author content fresh, here's what happens:</p>
+    <div style="margin: 1.5rem 0;">
+      <div style="display: flex; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid #DDD; align-items: center;">
+        <div style="flex: 0 0 35%; display: flex; gap: 0.5rem; align-items: center;">
+          <span style="color: #FF4901; font-weight: 600; flex-shrink: 0;">▸</span>
+          <strong style="color: #333; white-space: nowrap;">On-demand refresh</strong>
+        </div>
+        <span style="flex: 1; color: #666;">- Author can manually refresh product data when editing</span>
+      </div>
+      <div style="display: flex; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid #DDD; align-items: center;">
+        <div style="flex: 0 0 35%; display: flex; gap: 0.5rem; align-items: center;">
+          <span style="color: #FF4901; font-weight: 600; flex-shrink: 0;">▸</span>
+          <strong style="color: #333; white-space: nowrap;">TTL (Time-to-Live)</strong>
+        </div>
+        <span style="flex: 1; color: #666;">- Cached GraphQL responses expire after X minutes/hours and must be re-queried</span>
+      </div>
+      <div style="display: flex; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid #DDD; align-items: center;">
+        <div style="flex: 0 0 35%; display: flex; gap: 0.5rem; align-items: center;">
+          <span style="color: #FF4901; font-weight: 600; flex-shrink: 0;">▸</span>
+          <strong style="color: #333; white-space: nowrap;">Magento webhooks</strong>
+        </div>
+        <span style="flex: 1; color: #666;">- When a product updates in Magento, it can trigger AEM cache invalidation</span>
+      </div>
+      <div style="display: flex; gap: 1rem; padding: 1.5rem 0; align-items: center;">
+        <div style="flex: 0 0 35%; display: flex; gap: 0.5rem; align-items: center;">
+          <span style="color: #FF4901; font-weight: 600; flex-shrink: 0;">▸</span>
+          <strong style="color: #333; white-space: nowrap;">Periodic sync</strong>
+        </div>
+        <span style="flex: 1; color: #666;">- Scheduled jobs can refresh popular product data to keep it current</span>
+      </div>
+    </div>
+
+    <!-- Magento Architecture Section -->
+    <h2>Adobe Commerce Backend (Magento) Architecture</h2>
+    <p>While you work in AEM, it's helpful to understand what's happening in Magento behind the scenes. Magento is built on a modular system:</p>
+    
+    <h3>1. Service Layer Architecture</h3>
+    <p>At the heart of Adobe Commerce is a service-oriented architecture that separates concerns into distinct, independently deployable modules. This allows developers to focus on specific features without affecting the entire system.</p>
+
+    <h3>2. Module System</h3>
+    <p>The platform is built as a collection of interdependent modules, each handling specific functionality:</p>
+    <ul class="section-list">
+      <li><strong>Catalog Module</strong> - Manages product data, categories, and attributes</li>
+      <li><strong>Sales Module</strong> - Handles orders, invoices, and shipments</li>
+      <li><strong>Customer Module</strong> - Manages customer accounts and addresses</li>
+      <li><strong>Payment Module</strong> - Integrates payment processing</li>
+      <li><strong>Shipping Module</strong> - Manages shipping methods and rates</li>
+    </ul>
+
+    <h3>3. Database Layer</h3>
+    <p>Adobe Commerce uses MySQL/MariaDB to store data in an optimized relational structure. The database schema is designed for performance and scalability with proper indexing.</p>
+
+    <!-- Data Flow -->
+    <h2>Author to Live Workflow</h2>
+    <p>Understanding the complete journey from author creating content to visitors seeing it on the live site:</p>
+    
+    <div style="background: var(--dept-white-3); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+      <!-- Step cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        <!-- Step 1 -->
+        <div style="background: white; border: 2px solid #0066CC; border-radius: 6px; padding: 1.5rem; text-align: center;">
+          <div style="width: 50px; height: 50px; background: #0066CC; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">1</div>
+          <div style="font-weight: 600; font-size: 13px;">Author Opens<br/>Commerce Tile</div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div style="background: white; border: 2px solid #0066CC; border-radius: 6px; padding: 1.5rem; text-align: center;">
+          <div style="width: 50px; height: 50px; background: #0066CC; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">2</div>
+          <div style="font-weight: 600; font-size: 13px;">CIF Queries<br/>Magento</div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div style="background: white; border: 2px solid #00AA00; border-radius: 6px; padding: 1.5rem; text-align: center;">
+          <div style="width: 50px; height: 50px; background: #00AA00; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">3</div>
+          <div style="font-weight: 600; font-size: 13px;">Products<br/>Display</div>
+        </div>
+        
+        <!-- Step 4 -->
+        <div style="background: white; border: 2px solid #FF9800; border-radius: 6px; padding: 1.5rem; text-align: center;">
+          <div style="width: 50px; height: 50px; background: #FF9800; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">4</div>
+          <div style="font-weight: 600; font-size: 13px;">Author<br/>Enriches</div>
+        </div>
+        
+        <!-- Step 5 -->
+        <div style="background: white; border: 2px solid #FF4901; border-radius: 6px; padding: 1.5rem; text-align: center;">
+          <div style="width: 50px; height: 50px; background: #FF4901; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">5</div>
+          <div style="font-weight: 600; font-size: 13px;">Publish<br/>to Live</div>
+        </div>
+        
+        <!-- Step 6 -->
+        <div style="background: white; border: 2px solid #00AA00; border-radius: 6px; padding: 1.5rem; text-align: center;">
+          <div style="width: 50px; height: 50px; background: #00AA00; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px;">6</div>
+          <div style="font-weight: 600; font-size: 13px;">Visitors See<br/>Live Pages</div>
+        </div>
+      </div>
+      
+      <!-- Legend -->
+      <div style="background: #FFF3E0; border-left: 4px solid #FF4901; padding: 1.5rem; border-radius: 4px; margin-top: 2rem;">
+        <strong style="color: #FF4901; display: block; margin-bottom: 1rem;">What's Happening at Each Step:</strong>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid #FFD9BF;"><strong>1-2:</strong> CIF acts as the translator between AEM and Magento</li>
+          <li style="padding: 0.5rem 0; border-bottom: 1px solid #FFD9BF;"><strong>3-4:</strong> Author picks products and adds marketing copy, images, layouts</li>
+          <li style="padding: 0.5rem 0;"><strong>5-6:</strong> One click to publish sends enriched content to live environment where real visitors see it</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h3>Request Flow</h3>
+    <ol style="list-style: decimal; margin-left: 2rem; margin-bottom: 2rem;">
+      <li>URL request is received by the web server</li>
+      <li>Router analyzes the URL and routes to appropriate controller</li>
+      <li>Controller processes the request and interacts with models</li>
+      <li>Models fetch data from database or external services</li>
+      <li>Data is formatted and passed to view/template</li>
+      <li>HTML response is rendered and sent to browser</li>
+    </ol>
+
+    <!-- Key Concepts -->
+    <h2>Essential Concepts</h2>
+    
+    <h3>Models, Views, and Controllers</h3>
+    <p>Adobe Commerce follows the MVC pattern:</p>
+    <ul class="section-list">
+      <li><strong>Models</strong> - Represent data and business logic (e.g., Product, Order)</li>
+      <li><strong>Views</strong> - Template files that display data (PHTML files)</li>
+      <li><strong>Controllers</strong> - Process requests and coordinate M-V interaction</li>
+    </ul>
+
+    <h3>Collections vs. Single Items</h3>
+    <p>Adobe Commerce uses collection classes to manage groups of models efficiently with filtering, sorting, and pagination capabilities.</p>
+
+    <h3>Plugin System (Interceptors)</h3>
+    <p>Plugins allow you to modify behavior of public methods without changing the original class, following the Open/Closed Principle.</p>
+
+    <h3>Dependency Injection</h3>
+    <p>Adobe Commerce uses automatic dependency injection to improve testability and reduce coupling between classes.</p>
+
+    <!-- Commerce Cloud vs Self-Hosted -->
+    <h2>Adobe Commerce Cloud vs. Self-Hosted</h2>
+    <p>Adobe Commerce is available in two deployment options:</p>
+    
+    <h3>Adobe Commerce Cloud</h3>
+    <ul class="section-list">
+      <li>Fully managed infrastructure on AWS</li>
+      <li>Automatic scaling and high availability</li>
+      <li>Built-in CDN and DDoS protection</li>
+      <li>Integrated staging and production environments</li>
+      <li>Enhanced security and compliance</li>
+    </ul>
+
+    <h3>Self-Hosted / On-Premises</h3>
+    <ul class="section-list">
+      <li>Complete control over infrastructure</li>
+      <li>Custom server configurations</li>
+      <li>Responsible for security and maintenance</li>
+      <li>Potentially lower costs for large deployments</li>
+      <li>Requires dedicated DevOps resources</li>
+    </ul>
+
+    <!-- Extension Development -->
+    <h2>Extension Development</h2>
+    <p>Developers extend Adobe Commerce functionality by creating custom modules (extensions). Each module contains:</p>
+    <ul class="section-list">
+      <li><strong>etc/module.xml</strong> - Module configuration and dependencies</li>
+      <li><strong>etc/di.xml</strong> - Dependency injection configuration</li>
+      <li><strong>Helper classes</strong> - Utility functions</li>
+      <li><strong>Models</strong> - Data models and repositories</li>
+      <li><strong>Controllers</strong> - Request handlers</li>
+      <li><strong>Blocksand Templates</strong> - View layer components</li>
+      <li><strong>Database migrations</strong> - Schema updates</li>
+    </ul>
+
+    <!-- Best Practices -->
+    <h2>Development Best Practices</h2>
+    <ul class="section-list">
+      <li><strong>Keep Code Modular</strong> - Create focused, reusable modules</li>
+      <li><strong>Use Dependency Injection</strong> - Avoid hardcoded dependencies</li>
+      <li><strong>Follow PSR Standards</strong> - Use PSR-4 autoloading and PSR-2 coding standards</li>
+      <li><strong>Test Your Code</strong> - Write unit and integration tests</li>
+      <li><strong>Document Everything</strong> - Maintain clear documentation</li>
+      <li><strong>Version Your Extensions</strong> - Use semantic versioning</li>
+      <li><strong>Avoid Hacks</strong> - Find proper extension points instead of core modifications</li>
+    </ul>
+
+    <!-- Learning Path -->
+    <h2>Recommended Learning Path</h2>
+    <p>Start your Adobe Commerce journey with these recommended steps:</p>
+    <ol style="list-style: decimal; margin-left: 2rem; margin-bottom: 2rem;">
+      <li>Complete the <a href="magento-setup.html">Local Magento Setup</a> guide</li>
+      <li>Explore the <a href="hybrid-setup.html">Hybrid Development Environment</a></li>
+      <li>Study the core module architecture</li>
+      <li>Build your first simple extension</li>
+      <li>Master database models and collections</li>
+      <li>Develop custom frontend themes</li>
+      <li>Implement advanced features (custom attributes, pricing rules, etc.)</li>
+    </ol>
+
+    <!-- Resources -->
+    <h2>Additional Resources</h2>
+    <ul class="section-list">
+      <li><a href="https://experienceleague.adobe.com/docs/commerce-admin/start/administration/admin-overview.html" target="_blank">Adobe Commerce Admin Documentation</a></li>
+      <li><a href="https://developer.adobe.com/commerce/" target="_blank">Adobe Commerce Developer Documentation</a></li>
+      <li><a href="https://github.com/magento/magento2" target="_blank">GitHub Repository</a></li>
+      <li><a href="https://community.magento.com/" target="_blank">Magento Community Forums</a></li>
+    </ul>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dept-grey-4);">
+      <a href="../../index.html#adobe-commerce" class="btn btn-secondary">Back to Adobe Commerce</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="content">
+      <div>
+        <h4>Learning Paths</h4>
+        <ul>
+          <li><a href="../../index.html#adobe-commerce">Adobe Commerce</a></li>
+          <li><a href="../../index.html#adobe-eds">Edge Delivery Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://experienceleague.adobe.com" target="_blank">Adobe Experience League</a></li>
+          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community Forum</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
+    </div>
+  </footer>
+</body>
+</html>

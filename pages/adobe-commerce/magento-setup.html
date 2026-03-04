@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Magento Setup - Adobe Commerce Learning Hub</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+      font-size: 0.95rem;
+      color: var(--dept-grey-2);
+    }
+    
+    .breadcrumb a {
+      color: var(--dept-orange);
+    }
+    
+    .learning-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    
+    .learning-content h2 {
+      margin-top: 2.5rem;
+      color: var(--dept-black);
+    }
+    
+    .learning-content h2 + p {
+      font-size: 1.1rem;
+      color: var(--dept-grey-1);
+      line-height: 1.6;
+    }
+    
+    .section-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .section-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--dept-grey-4);
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .section-list li:before {
+      content: '▸';
+      color: var(--dept-orange);
+      font-weight: bold;
+      min-width: 20px;
+    }
+    
+    code {
+      background: var(--dept-white-3);
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: var(--dept-black-1);
+    }
+    
+    .code-block {
+      background: var(--dept-black);
+      color: var(--dept-white-1);
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
+        <span>Adobe Learning Hub</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html#adobe-commerce">Commerce</a></li>
+        <li><a href="../../index.html#adobe-eds">Edge Services</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> / <a href="../../index.html#adobe-commerce">Adobe Commerce</a> / Local Magento Setup
+  </div>
+
+  <!-- Main Content -->
+  <section class="learning-content">
+    <h1>Local Magento Setup</h1>
+    <p>A comprehensive guide to setting up Magento 2 on your local machine. This guide covers the complete installation process from prerequisites to post-installation configuration.</p>
+
+    <!-- System Requirements -->
+    <h2>System Requirements</h2>
+    <p>Ensure your system meets these minimum requirements:</p>
+    <ul class="section-list">
+      <li><strong>Operating System</strong> - macOS, Linux, or Windows with WSL2</li>
+      <li><strong>PHP</strong> - 8.1 or 8.2 (Apache or Nginx)</li>
+      <li><strong>MySQL</strong> - 8.0 or MariaDB 10.4+</li>
+      <li><strong>RAM</strong> - Minimum 2GB, recommended 4GB+</li>
+      <li><strong>Disk Space</strong> - At least 5GB for full installation</li>
+      <li><strong>Composer</strong> - Latest version</li>
+    </ul>
+
+    <!-- Installation Guide -->
+    <h2>Installation Guide</h2>
+    <p>Follow this step-by-step process to install Magento locally:</p>
+    
+    <h3>Step 1: Prepare Your Environment</h3>
+    <p>Install required packages and tools:</p>
+    <div class="code-block"># For macOS with Homebrew
+brew install php@8.2 composer mysql
+
+# For Ubuntu/Debian
+sudo apt-get install php8.2 composer mysql-server</div>
+
+    <h3>Step 2: Download Magento</h3>
+    <p>Download Magento 2 using Composer:</p>
+    <div class="code-block">composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento2-local</div>
+
+    <h3>Step 3: Configure Database</h3>
+    <p>Create a database and user for Magento:</p>
+    <div class="code-block">mysql -u root -p
+CREATE DATABASE magento2;
+CREATE USER 'magento'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON magento2.* TO 'magento'@'localhost';
+FLUSH PRIVILEGES;</div>
+
+    <h3>Step 4: Install Magento</h3>
+    <p>Run the Magento installation command:</p>
+    <div class="code-block">cd magento2-local
+php bin/magento setup:install \
+  --base-url=http://localhost/magento2-local/ \
+  --db-host=localhost \
+  --db-name=magento2 \
+  --db-user=magento \
+  --db-password=password \
+  --admin-firstname=Admin \
+  --admin-lastname=User \
+  --admin-email=admin@example.com \
+  --admin-user=admin \
+  --admin-password=Admin123!@# \
+  --language=en_US \
+  --currency=USD \
+  --timezone=America/Chicago</div>
+
+    <h3>Step 5: Verify Installation</h3>
+    <p>Check that Magento is installed correctly:</p>
+    <div class="code-block">php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy -f
+php bin/magento cache:clean</div>
+
+    <!-- Post-Installation Configuration -->
+    <h2>Post-Installation Configuration</h2>
+    <p>After installation, configure these important settings:</p>
+    
+    <h3>Web Server Configuration</h3>
+    <p>Set up virtual host for your Magento installation. For Apache, create a virtual host file:</p>
+    <div class="code-block">&lt;VirtualHost *:80&gt;
+    ServerName magento2.local
+    DocumentRoot /path/to/magento2-local/pub
+    &lt;Directory /path/to/magento2-local/pub&gt;
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</div>
+
+    <h3>File Permissions</h3>
+    <p>Set proper file permissions for Magento directories:</p>
+    <div class="code-block">cd /path/to/magento2-local
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+chmod u+x bin/magento</div>
+
+    <!-- Development Mode -->
+    <h2>Development Mode</h2>
+    <p>Switch to developer mode for better debugging:</p>
+    <div class="code-block">php bin/magento deploy:mode:set developer</div>
+    
+    <p>In developer mode, static files are created on-demand and slower performance is expected. This mode is ideal for development.</p>
+
+    <!-- Common Commands -->
+    <h2>Essential Magento Commands</h2>
+    <ul class="section-list">
+      <li><code>php bin/magento cache:clean</code> - Clear all caches</li>
+      <li><code>php bin/magento cache:flush</code> - Flush all caches</li>
+      <li><code>php bin/magento indexer:reindex</code> - Reindex all data</li>
+      <li><code>php bin/magento setup:upgrade</code> - Run database upgrades</li>
+      <li><code>php bin/magento admin:user:create</code> - Create admin user</li>
+    </ul>
+
+    <!-- Next Steps -->
+    <h2>Next Steps</h2>
+    <p>After successful setup:</p>
+    <ul class="section-list">
+      <li>Log into the admin panel at <code>/admin</code></li>
+      <li>Explore the <a href="overview.html">Adobe Commerce Architecture Overview</a></li>
+      <li>Learn about <a href="hybrid-setup.html">Hybrid Development Setup</a></li>
+      <li>Start developing custom extensions</li>
+    </ul>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dept-grey-4);">
+      <a href="../../index.html#adobe-commerce" class="btn btn-secondary">Back to Adobe Commerce</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="content">
+      <div>
+        <h4>Learning Paths</h4>
+        <ul>
+          <li><a href="../../index.html#adobe-commerce">Adobe Commerce</a></li>
+          <li><a href="../../index.html#adobe-eds">Edge Delivery Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://experienceleague.adobe.com" target="_blank">Adobe Experience League</a></li>
+          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community Forum</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
+    </div>
+  </footer>
+</body>
+</html>

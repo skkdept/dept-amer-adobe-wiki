@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automate Migration - Adobe Edge Delivery Services Learning Hub</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .breadcrumb {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 0;
+      font-size: 0.95rem;
+      color: var(--dept-grey-2);
+    }
+    
+    .breadcrumb a {
+      color: var(--dept-orange);
+    }
+    
+    .learning-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    
+    .learning-content h2 {
+      margin-top: 2.5rem;
+      color: var(--dept-black);
+    }
+    
+    .learning-content h2 + p {
+      font-size: 1.1rem;
+      color: var(--dept-grey-1);
+      line-height: 1.6;
+    }
+    
+    .section-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .section-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--dept-grey-4);
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .section-list li:before {
+      content: '▸';
+      color: var(--dept-orange);
+      font-weight: bold;
+      min-width: 20px;
+    }
+    
+    code {
+      background: var(--dept-white-3);
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.9em;
+      color: var(--dept-black-1);
+    }
+    
+    .code-block {
+      background: var(--dept-black);
+      color: var(--dept-white-1);
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    
+    .highlight-box {
+      background: var(--dept-white-3);
+      border-left: 4px solid var(--dept-orange);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
+        <span>Adobe Learning Hub</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html#adobe-commerce">Commerce</a></li>
+        <li><a href="../../index.html#adobe-eds">Edge Services</a></li>
+        <li><a href="../../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="../../index.html">Home</a> / <a href="../../index.html#adobe-eds">Edge Delivery Services</a> / Automate Migration
+  </div>
+
+  <!-- Main Content -->
+  <section class="learning-content">
+    <h1>Automate Migration</h1>
+    <p>Learn how to migrate content and data from existing systems to Adobe Edge Delivery Services using automation tools and best practices.</p>
+
+    <!-- Migration Overview -->
+    <h2>Migration Overview</h2>
+    <p>Migrating to Adobe Edge Delivery Services involves transferring content, assets, and configurations from your existing platform. Modern tools and APIs make this process automated and efficient.</p>
+
+    <div class="highlight-box">
+      <strong>Migration Strategy:</strong> Plan your migration in phases - assess source systems, extract data, transform to new format, validate, and deploy with zero downtime.
+    </div>
+
+    <!-- Pre-Migration Assessment -->
+    <h2>Pre-Migration Assessment</h2>
+    <p>Before starting migration, evaluate your current environment:</p>
+
+    <h3>Content Audit</h3>
+    <ul class="section-list">
+      <li><strong>Inventory</strong> - Document all content types and volume</li>
+      <li><strong>Structure</strong> - Map existing content model to target model</li>
+      <li><strong>Dependencies</strong> - Identify linked content and relationships</li>
+      <li><strong>Assets</strong> - Catalog images, videos, and other media</li>
+      <li><strong>Metadata</strong> - Review SEO and custom data fields</li>
+    </ul>
+
+    <h3>System Analysis</h3>
+    <ul class="section-list">
+      <li><strong>Source Platform</strong> - Current CMS/database system</li>
+      <li><strong>APIs Available</strong> - Extraction capabilities</li>
+      <li><strong>Authentication</strong> - Access requirements and credentials</li>
+      <li><strong>Performance</strong> - Expected migration duration</li>
+      <li><strong>Risks</strong> - Identify potential issues and blockers</li>
+    </ul>
+
+    <!-- Migration Tools -->
+    <h2>Migration Tools & Solutions</h2>
+    
+    <h3>Adobe Migration Tool</h3>
+    <p>Official tool for migrating content to AEM and Edge Delivery Services:</p>
+    <div class="code-block">npm install -g @adobe/aem-migration-tool
+
+# Initialize migration project
+aem-migrate init --source wordpress --target aem-edge</div>
+
+    <h3>Custom Migration Scripts</h3>
+    <p>Build custom migration logic for unique requirements:</p>
+    <div class="code-block">// migration-script.js
+const axios = require('axios');
+const { AEMClient } = require('@adobe/aem-api');
+
+async function migrateContent() {
+  const sourceClient = new SourceClient({
+    baseUrl: 'https://old-site.com/api'
+  });
+  
+  const aemClient = new AEMClient({
+    org: 'your-org',
+    accessToken: process.env.AEM_TOKEN
+  });
+
+  // Extract content from source
+  const pages = await sourceClient.getPages();
+  
+  // Transform and load to AEM
+  for (const page of pages) {
+    const transformed = transformPage(page);
+    await aemClient.createAsset(transformed);
+  }
+}
+
+function transformPage(page) {
+  return {
+    title: page.name,
+    path: `/content/pages/${page.slug}`,
+    content: page.body,
+    metadata: {
+      description: page.meta_description,
+      keywords: page.tags
+    }
+  };
+}</div>
+
+    <!-- Data Extraction -->
+    <h2>Extracting Data from Source Systems</h2>
+    
+    <h3>Database Export</h3>
+    <p>For database-driven systems, export data in standard formats:</p>
+    <div class="code-block"># Export from WordPress database
+mysqldump -u wordpress -p wordpress_db posts > posts.sql
+
+# Convert to JSON for easier processing
+node convert-sql-to-json.js posts.sql > content.json</div>
+
+    <h3>API-Based Extraction</h3>
+    <p>Use REST APIs to pull content from source systems:</p>
+    <div class="code-block">// Extract content via REST API
+const axios = require('axios');
+
+async function extractPages() {
+  try {
+    const response = await axios.get(
+      'https://source-api.com/api/v1/pages',
+      {
+        headers: {
+          'Authorization': `Bearer ${process.env.SOURCE_API_KEY}`
+        }
+      }
+    );
+    
+    // Save extracted data
+    const fs = require('fs');
+    fs.writeFileSync(
+      'extracted-pages.json',
+      JSON.stringify(response.data, null, 2)
+    );
+    
+    console.log(`Extracted ${response.data.length} pages`);
+  } catch (error) {
+    console.error('Extraction failed:', error.message);
+  }
+}
+
+extractPages();</div>
+
+    <!-- Data Transformation -->
+    <h2>Data Transformation</h2>
+    <p>Transform extracted data to match your target content model:</p>
+    
+    <h3>Content Mapping</h3>
+    <p>Map source fields to target structure:</p>
+    <div class="code-block">// Transform content to target format
+function transformContent(sourceContent) {
+  return {
+    // Target field mappings
+    title: sourceContent.post_title,
+    slug: sourceContent.post_name,
+    description: sourceContent.post_excerpt,
+    content: cleanHTMLContent(sourceContent.post_content),
+    author: sourceContent.post_author,
+    publishDate: sourceContent.post_date,
+    
+    // Custom field mappings
+    seoTitle: sourceContent.meta['_yoast_title'] || sourceContent.post_title,
+    seoDescription: sourceContent.meta['_yoast_meta_description'],
+    
+    // Media references
+    featuredImage: sourceContent.featured_image_url
+  };
+}
+
+function cleanHTMLContent(html) {
+  // Remove unsupported HTML, sanitize, normalize
+  return html.replace(/&lt;script[^&]*&lt;\/script&gt;/gi, '');
+}</div>
+
+    <!-- Validation & Testing -->
+    <h2>Validation & Testing</h2>
+    <p>Ensure migrated content is accurate and complete:</p>
+    
+    <h3>Data Validation Checks</h3>
+    <ul class="section-list">
+      <li><strong>Completeness</strong> - All required fields are populated</li>
+      <li><strong>Data Types</strong> - Fields match expected format</li>
+      <li><strong>Referential Integrity</strong> - Links between content are valid</li>
+      <li><strong>Asset References</strong> - All media files are accessible</li>
+      <li><strong>Duplicates</strong> - No duplicate content created</li>
+    </ul>
+
+    <h3>Testing Strategy</h3>
+    <div class="code-block">// Validation script
+async function validateMigration() {
+  const validationRules = {
+    requiredFields: ['title', 'slug', 'content'],
+    dataTypes: {
+      publishDate: 'date',
+      tags: 'array',
+      metadata: 'object'
+    }
+  };
+
+  const results = {
+    passed: 0,
+    failed: 0,
+    errors: []
+  };
+
+  for (const page of migratedPages) {
+    // Check required fields
+    validationRules.requiredFields.forEach(field => {
+      if (!page[field]) {
+        results.failed++;
+        results.errors.push(`Page ${page.id} missing ${field}`);
+      } else {
+        results.passed++;
+      }
+    });
+  }
+
+  return results;
+}</div>
+
+    <!-- Deployment -->
+    <h2>Migration Deployment</h2>
+    <p>Deploy migrated content to Edge Delivery Services:</p>
+    
+    <h3>Phase-Based Deployment</h3>
+    <ol style="list-style: decimal; margin-left: 2rem; margin-bottom: 2rem;">
+      <li><strong>Staging</strong> - Deploy to staging environment for testing</li>
+      <li><strong>Validation</strong> - Verify all content displays correctly</li>
+      <li><strong>User Testing</strong> - Get stakeholder sign-off</li>
+      <li><strong>Production</strong> - Deploy to live environment</li>
+      <li><strong>Monitoring</strong> - Monitor for issues post-migration</li>
+    </ol>
+
+    <h3>Deployment Command</h3>
+    <div class="code-block"># Deploy migration
+aem-migrate deploy \
+  --env production \
+  --source-batch extracted-pages.json \
+  --verify-assets \
+  --post-migration-hooks</div>
+
+    <!-- Post-Migration -->
+    <h2>Post-Migration Tasks</h2>
+    <ul class="section-list">
+      <li><strong>Redirect Setup</strong> - Configure URL redirects from old to new paths</li>
+      <li><strong>SEO Optimization</strong> - Verify metadata and update search console</li>
+      <li><strong>Performance Review</strong> - Monitor page speed and optimize</li>
+      <li><strong>User Training</strong> - Educate content teams on new platform</li>
+      <li><strong>Documentation</strong> - Update internal documentation</li>
+      <li><strong>Monitoring</strong> - Set up alerts and analytics tracking</li>
+    </ul>
+
+    <!-- Troubleshooting -->
+    <h2>Common Migration Issues</h2>
+    
+    <h3>Asset Migration Failures</h3>
+    <p>Verify source URLs are accessible and properly referenced in content. Use batch retry mechanisms for failed assets.</p>
+
+    <h3>Content Formatting Issues</h3>
+    <p>Clean HTML/rich text content to remove unsupported tags. Use HTML parsers to normalize formatting.</p>
+
+    <h3>Performance During Migration</h3>
+    <p>Execute migrations during off-peak hours. Use batch processing with configurable concurrency limits.</p>
+
+    <!-- Best Practices -->
+    <h2>Migration Best Practices</h2>
+    <ul class="section-list">
+      <li><strong>Dry Run First</strong> - Always test with a subset before full migration</li>
+      <li><strong>Backup Source</strong> - Keep backups of original content</li>
+      <li><strong>Monitor Logs</strong> - Track all migration activities and errors</li>
+      <li><strong>Schedule Carefully</strong> - Plan for content freeze during migration</li>
+      <li><strong>Document Process</strong> - Record migration steps for future reference</li>
+      <li><strong>Rollback Plan</strong> - Have a strategy to revert if issues occur</li>
+    </ul>
+
+    <!-- Next Steps -->
+    <h2>Next Steps</h2>
+    <ul class="section-list">
+      <li>Complete your migration and validate results</li>
+      <li>Explore <a href="dalive-setup.html">da.live Setup</a> for optimization</li>
+      <li>Learn about <a href="universal-editor.html">Universal Editor</a> for ongoing content management</li>
+      <li>Monitor performance and optimize further</li>
+      <li>Train your team on the new platform</li>
+    </ul>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dept-grey-4);">
+      <a href="../../index.html#adobe-eds" class="btn btn-secondary">Back to Edge Delivery Services</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="content">
+      <div>
+        <h4>Learning Paths</h4>
+        <ul>
+          <li><a href="../../index.html#adobe-commerce">Adobe Commerce</a></li>
+          <li><a href="../../index.html#adobe-eds">Edge Delivery Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://experienceleague.adobe.com" target="_blank">Adobe Experience League</a></li>
+          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community Forum</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
+    </div>
+  </footer>
+</body>
+</html>
