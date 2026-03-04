@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Links - Adobe Learning Hub</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg">
+  <style>
+    .quicklinks-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+    .ql-group {
+      margin-bottom: 3rem;
+    }
+    .ql-group-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dept-grey-2);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--dept-grey-4);
+    }
+    .ql-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+    }
+    .ql-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--dept-white);
+      border: 1px solid var(--dept-grey-4);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: var(--dept-black);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .ql-item:hover {
+      border-color: var(--dept-orange);
+      color: var(--dept-orange);
+      box-shadow: 0 3px 10px rgba(255,73,1,0.1);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .ql-item-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .ql-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="../index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;">
+          <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
+          <span>Adobe Learning Hub</span>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="trainings.html">Trainings</a></li>
+        <li><a href="demos.html">Demos</a></li>
+        <li><a href="sandboxes.html">Sandboxes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1><strong>Quick Links</strong></h1>
+    <p>Frequently used resources, documentation portals, and developer tools — all in one place.</p>
+  </section>
+
+  <!-- Quick Links Content -->
+  <div class="quicklinks-section">
+
+    <!-- Documentation -->
+    <div class="ql-group">
+      <div class="ql-group-title">Documentation</div>
+      <div class="ql-list">
+        <a href="https://experienceleague.adobe.com" target="_blank" class="ql-item">
+          <span class="ql-item-icon">📖</span> Experience League
+        </a>
+        <a href="https://developer.adobe.com" target="_blank" class="ql-item">
+          <span class="ql-item-icon">💻</span> Adobe Developer Portal
+        </a>
+        <a href="https://experienceleague.adobe.com/docs/commerce.html" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🛒</span> Commerce Docs
+        </a>
+        <a href="https://experienceleague.adobe.com/docs/experience-manager.html" target="_blank" class="ql-item">
+          <span class="ql-item-icon">📄</span> AEM Docs
+        </a>
+        <a href="https://experienceleague.adobe.com/docs/journey-optimizer.html" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🗺️</span> AJO Docs
+        </a>
+        <a href="https://experienceleague.adobe.com/docs/experience-platform.html" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🌐</span> AEP Docs
+        </a>
+      </div>
+    </div>
+
+    <!-- Developer Tools -->
+    <div class="ql-group">
+      <div class="ql-group-title">Developer Tools</div>
+      <div class="ql-list">
+        <a href="https://da.live" target="_blank" class="ql-item">
+          <span class="ql-item-icon">✏️</span> da.live Editor
+        </a>
+        <a href="https://experience.adobe.com" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🔧</span> Adobe Admin Console
+        </a>
+        <a href="https://repo.magento.com" target="_blank" class="ql-item">
+          <span class="ql-item-icon">📦</span> Magento Composer Repo
+        </a>
+        <a href="https://commerce.adobe.com" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🏪</span> Adobe Commerce Portal
+        </a>
+      </div>
+    </div>
+
+    <!-- DEPT Resources -->
+    <div class="ql-group">
+      <div class="ql-group-title">DEPT Resources</div>
+      <div class="ql-list">
+        <a href="https://www.deptagency.com" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🏢</span> DEPT® Website
+        </a>
+        <a href="https://www.brand.deptagency.com" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🎨</span> Brand Guidelines
+        </a>
+        <a href="https://github.com/skkdept" target="_blank" class="ql-item">
+          <span class="ql-item-icon">🐙</span> GitHub Org
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="content">
+      <div>
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="presentations.html">Presentations</a></li>
+          <li><a href="demos.html">Demos</a></li>
+          <li><a href="trainings.html">Trainings</a></li>
+          <li><a href="sandboxes.html">Sandboxes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://experienceleague.adobe.com" target="_blank">Experience League</a></li>
+          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hub</h4>
+        <ul>
+          <li><a href="../index.html">← Back to Hub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="https://www.deptagency.com" target="_blank">DEPT® Agency</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
+      <p>All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
