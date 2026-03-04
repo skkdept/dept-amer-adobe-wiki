@@ -192,7 +192,42 @@
       <p>All rights reserved.</p>
     </div>
   </footer>
+  </div>
 
   <script src="../js/main.js"></script>
+  <script>
+    const CORRECT_PASSWORD = 'adobe!';
+    const passwordSection = document.getElementById('password-section');
+    const contentSection = document.getElementById('content');
+    const passwordInput = document.getElementById('password-input');
+    const passwordButton = document.getElementById('password-button');
+
+    function handleAuth() {
+      if (passwordInput.value === CORRECT_PASSWORD) {
+        sessionStorage.setItem('authenticated', 'true');
+        passwordSection.classList.remove('active');
+        contentSection.classList.remove('hidden');
+        passwordInput.value = '';
+      } else {
+        passwordInput.value = '';
+        passwordInput.placeholder = '❌ Incorrect password';
+        passwordInput.style.borderColor = '#cd2a18';
+        passwordInput.focus();
+      }
+    }
+
+    passwordButton.addEventListener('click', handleAuth);
+    passwordInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleAuth();
+    });
+
+    // Check if already authenticated
+    if (sessionStorage.getItem('authenticated') === 'true') {
+      passwordSection.classList.remove('active');
+      contentSection.classList.remove('hidden');
+    } else {
+      passwordInput.focus();
+    }
+  </script>
 </body>
 </html>

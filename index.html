@@ -10,6 +10,123 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg">
   <style>
+    #password-section {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+    }
+    #password-section.active {
+      display: flex;
+    }
+    #password-dialog {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      max-width: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    #password-dialog h2 {
+      margin: 0 0 1.5rem;
+      color: #000;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    #password-dialog input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      margin-bottom: 1.5rem;
+    }
+    #password-dialog button {
+      width: 100%;
+      padding: 0.75rem;
+      background: #FF4901;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    #password-dialog button:hover {
+      background: #e63800;
+    }
+    #content {
+      display: block;
+    }
+    #content.hidden {
+      display: none;
+    }
+    header {
+      text-align: center;
+    }
+    header nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+    }
+    header {
+      flex-shrink: 0;
+    }
+    .wiki-section {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .wiki-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      overflow: hidden;
+    }
+    footer {
+      background: #000;
+      color: white;
+      padding: 2rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+    footer .content {
+      display: none;
+    }
+    footer .footer-bottom {
+      display: none;
+    }
     .wiki-section {
       max-width: 1200px;
       margin: 0 auto;
@@ -25,7 +142,7 @@
     }
     .wiki-tiles {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
     }
     .wiki-tile {
@@ -86,26 +203,37 @@
   </style>
 </head>
 <body>
+  <!-- Password Section -->
+  <div id="password-section" class="active">
+    <div id="password-dialog">
+      <h2>🔐 Enter Password</h2>
+      <input type="password" id="password-input" placeholder="Password">
+      <button id="password-button">Access</button>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div id="content" class="hidden">
   <!-- Header & Navigation -->
   <header>
     <nav>
       <div class="logo">
         <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
-        <span>Adobe Learning Hub</span>
+        <span>DEPT® - Adobe Wiki</span>
       </div>
-      <ul class="nav-links">
+      <!-- <ul class="nav-links">
         <li><a href="pages/trainings.html">Trainings</a></li>
         <li><a href="pages/demos.html">Demos</a></li>
         <li><a href="pages/presentations.html">Presentations</a></li>
-      </ul>
+      </ul> -->
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <!-- <section class="hero">
     <h1>Adobe Learning Hub</h1>
     <p>Your central resource for Adobe technologies at DEPT®. Explore trainings, demos, presentations, sandboxes, and quick links.</p>
-  </section>
+  </section> -->
 
   <!-- Wiki Landing Tiles -->
   <div class="wiki-section">
@@ -147,47 +275,44 @@
 
   <!-- Footer -->
   <footer id="contact">
-    <div class="content">
-      <div>
-        <h4>Categories</h4>
-        <ul>
-          <li><a href="pages/presentations.html">Presentations</a></li>
-          <li><a href="pages/demos.html">Demos</a></li>
-          <li><a href="pages/trainings.html">Trainings</a></li>
-          <li><a href="pages/sandboxes.html">Sandboxes</a></li>
-          <li><a href="pages/quick-links.html">Quick Links</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Trainings</h4>
-        <ul>
-          <li><a href="pages/adobe-commerce/magento-setup.html">Magento Setup</a></li>
-          <li><a href="pages/adobe-commerce/overview.html">Commerce Overview</a></li>
-          <li><a href="pages/adobe-eds/dalive-setup.html">da.live Setup</a></li>
-          <li><a href="pages/adobe-eds/universal-editor.html">Universal Editor</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="https://experienceleague.adobe.com" target="_blank">Experience League</a></li>
-          <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>About</h4>
-        <ul>
-          <li><a href="https://www.deptagency.com" target="_blank">DEPT® Agency</a></li>
-          <li><a href="https://www.brand.deptagency.com" target="_blank">Brand Guidelines</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</p>
-      <p>All rights reserved.</p>
-    </div>
+    <span>&copy; 2026 Adobe Learning Hub. Designed by DEPT®</span>
+    <span>All rights reserved.</span>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    const CORRECT_PASSWORD = 'adobe!';
+    const passwordSection = document.getElementById('password-section');
+    const contentSection = document.getElementById('content');
+    const passwordInput = document.getElementById('password-input');
+    const passwordButton = document.getElementById('password-button');
+
+    function handleAuth() {
+      if (passwordInput.value === CORRECT_PASSWORD) {
+        sessionStorage.setItem('authenticated', 'true');
+        passwordSection.classList.remove('active');
+        contentSection.classList.remove('hidden');
+        passwordInput.value = '';
+      } else {
+        passwordInput.value = '';
+        passwordInput.placeholder = '❌ Incorrect password';
+        passwordInput.style.borderColor = '#cd2a18';
+        passwordInput.focus();
+      }
+    }
+
+    passwordButton.addEventListener('click', handleAuth);
+    passwordInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleAuth();
+    });
+
+    // Check if already authenticated
+    if (sessionStorage.getItem('authenticated') === 'true') {
+      passwordSection.classList.remove('active');
+      contentSection.classList.remove('hidden');
+    } else {
+      passwordInput.focus();
+    }
+  </script>
 </body>
 </html>
