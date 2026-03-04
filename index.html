@@ -9,6 +9,81 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg">
+  <style>
+    .wiki-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+    .wiki-section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dept-grey-2);
+      margin-bottom: 1.5rem;
+    }
+    .wiki-tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .wiki-tile {
+      background: var(--dept-white);
+      border: 1px solid var(--dept-grey-4);
+      border-radius: 8px;
+      padding: 1.5rem 1.5rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: relative;
+    }
+    .wiki-tile::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--dept-orange), transparent);
+      border-radius: 8px 8px 0 0;
+    }
+    .wiki-tile:hover {
+      border-color: var(--dept-orange);
+      box-shadow: 0 8px 24px rgba(255,73,1,0.1);
+      transform: translateY(-3px);
+      text-decoration: none;
+    }
+    .wiki-tile-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .wiki-tile h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dept-black);
+      margin: 0;
+    }
+    .wiki-tile p {
+      font-size: 0.82rem;
+      color: var(--dept-grey-2);
+      margin: 0;
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .wiki-tiles {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 380px) {
+      .wiki-tiles {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header & Navigation -->
@@ -19,87 +94,77 @@
         <span>Adobe Learning Hub</span>
       </div>
       <ul class="nav-links">
-        <li><a href="#adobe-commerce">Commerce</a></li>
-        <li><a href="#adobe-eds">Edge Services</a></li>
-        <li><a href="#contact">Get Started</a></li>
+        <li><a href="pages/trainings.html">Trainings</a></li>
+        <li><a href="pages/demos.html">Demos</a></li>
+        <li><a href="pages/presentations.html">Presentations</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Master <strong>Adobe</strong> Technologies</h1>
-    <p>Enterprise-grade learning paths for Adobe Commerce and Edge Delivery Services. Built by DEPT®, designed for modern developers.</p>
-    <div class="hero-ctas">
-      <a href="#adobe-commerce" class="btn btn-primary">Explore Commerce</a>
-      <a href="#adobe-eds" class="btn btn-secondary">Explore Edge Services</a>
-    </div>
+    <h1>Adobe Learning Hub</h1>
+    <p>Your central resource for Adobe technologies at DEPT®. Explore trainings, demos, presentations, sandboxes, and quick links.</p>
   </section>
 
-  <!-- Products Section -->
-  <section class="products-section">
-    <!-- Adobe Commerce -->
-    <div class="product-group" id="adobe-commerce">
-      <h2 class="product-title">Adobe Commerce</h2>
-      <p style="color: var(--dept-grey-2); font-size: 1.05rem; margin-bottom: 3rem; max-width: 600px;">Enterprise e-commerce platform for global brands. Master setup, development, and advanced configurations.</p>
-      
-      <div class="tiles-container">
-        <!-- Tile 1 -->
-        <a href="pages/adobe-commerce/magento-setup.html" class="tile">
-          <h3>Local Magento Setup</h3>
-          <p>Complete installation guide covering system requirements, composer setup, database configuration, admin access, and post-installation optimization.</p>
-        </a>
+  <!-- Wiki Landing Tiles -->
+  <div class="wiki-section">
+    <h2>Browse by category</h2>
+    <div class="wiki-tiles">
 
-        <!-- Tile 2 -->
-        <a href="pages/adobe-commerce/hybrid-setup.html" class="tile">
-          <h3>Local Hybrid Setup</h3>
-          <p>Advanced development environment combining containerized services with local PHP execution. Optimize performance and developer experience.</p>
-        </a>
+      <a href="pages/presentations.html" class="wiki-tile">
+        <div class="wiki-tile-icon">🎤</div>
+        <h3>Presentations</h3>
+        <p>DEPT Internal, Client &amp; Adobe presentation decks grouped by category.</p>
+      </a>
 
-        <!-- Tile 3 -->
-        <a href="pages/adobe-commerce/overview.html" class="tile">
-          <h3>Commerce Overview</h3>
-          <p>Deep dive into Adobe Commerce architecture, core modules, MVC pattern, plugins, dependency injection, and extension development best practices.</p>
-        </a>
-      </div>
+      <a href="pages/demos.html" class="wiki-tile">
+        <div class="wiki-tile-icon">🎬</div>
+        <h3>Demos</h3>
+        <p>Live demo environments: Universal Editor, AEM Agents, AEP + AJO, and more.</p>
+      </a>
+
+      <a href="pages/trainings.html" class="wiki-tile">
+        <div class="wiki-tile-icon">📚</div>
+        <h3>Trainings</h3>
+        <p>Adobe Commerce &amp; Edge Delivery Services learning paths via Experience League.</p>
+      </a>
+
+      <a href="pages/sandboxes.html" class="wiki-tile">
+        <div class="wiki-tile-icon">🧪</div>
+        <h3>Sandboxes</h3>
+        <p>Access practice sandboxes for hands-on exploration of Adobe products.</p>
+      </a>
+
+      <a href="pages/quick-links.html" class="wiki-tile">
+        <div class="wiki-tile-icon">⚡</div>
+        <h3>Quick Links</h3>
+        <p>Frequently used links, documentation, and developer resources.</p>
+      </a>
+
     </div>
-
-    <!-- Adobe Edge Delivery Services -->
-    <div class="product-group" id="adobe-eds">
-      <h2 class="product-title">Edge Delivery Services</h2>
-      <p style="color: var(--dept-grey-2); font-size: 1.05rem; margin-bottom: 3rem; max-width: 600px;">Next-generation content delivery platform built for speed and scale. Learn modern content management and distribution.</p>
-      
-      <div class="tiles-container">
-        <!-- Tile 1 -->
-        <a href="pages/adobe-eds/dalive-setup.html" class="tile">
-          <h3>da.live Setup (WIP)</h3>
-          <p>Get started with Adobe's edge delivery platform. Configure projects, set up content sources, local development, and deploy to production.</p>
-        </a>
-
-        <!-- Tile 2 -->
-        <a href="pages/adobe-eds/universal-editor.html" class="tile">
-          <h3>Universal Editor (WIP)</h3>
-          <p>Master visual content editing and collaboration. Configure authoring experience, create content models, manage permissions, and publish workflows.</p>
-        </a>
-
-        <!-- Tile 3 -->
-        <a href="pages/adobe-eds/migration.html" class="tile">
-          <h3>Automated Migration (WIP)</h3>
-          <p>Migrate existing content and data to Edge Delivery Services. Learn extraction, transformation, validation, and deployment strategies.</p>
-        </a>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer id="contact">
     <div class="content">
       <div>
-        <h4>Learning</h4>
+        <h4>Categories</h4>
         <ul>
-          <li><a href="#adobe-commerce">Adobe Commerce</a></li>
-          <li><a href="#adobe-eds">Edge Delivery Services</a></li>
-          <li><a href="#">Advanced Topics</a></li>
+          <li><a href="pages/presentations.html">Presentations</a></li>
+          <li><a href="pages/demos.html">Demos</a></li>
+          <li><a href="pages/trainings.html">Trainings</a></li>
+          <li><a href="pages/sandboxes.html">Sandboxes</a></li>
+          <li><a href="pages/quick-links.html">Quick Links</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Trainings</h4>
+        <ul>
+          <li><a href="pages/adobe-commerce/magento-setup.html">Magento Setup</a></li>
+          <li><a href="pages/adobe-commerce/overview.html">Commerce Overview</a></li>
+          <li><a href="pages/adobe-eds/dalive-setup.html">da.live Setup</a></li>
+          <li><a href="pages/adobe-eds/universal-editor.html">Universal Editor</a></li>
         </ul>
       </div>
       <div>
@@ -107,15 +172,6 @@
         <ul>
           <li><a href="https://experienceleague.adobe.com" target="_blank">Experience League</a></li>
           <li><a href="https://developer.adobe.com" target="_blank">Adobe Developer</a></li>
-          <li><a href="#">Full Documentation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Community Forum</a></li>
-          <li><a href="#">Get Help</a></li>
         </ul>
       </div>
       <div>
@@ -123,7 +179,6 @@
         <ul>
           <li><a href="https://www.deptagency.com" target="_blank">DEPT® Agency</a></li>
           <li><a href="https://www.brand.deptagency.com" target="_blank">Brand Guidelines</a></li>
-          <li><a href="#">Careers</a></li>
         </ul>
       </div>
     </div>
