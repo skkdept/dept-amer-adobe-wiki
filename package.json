@@ -1,0 +1,24 @@
+{
+  "name": "dept-amer-adobe-wiki",
+  "version": "1.0.0",
+  "description": "A modern, DEPT-branded learning website for Adobe technologies featuring comprehensive guides for Adobe Commerce and Edge Delivery Services.",
+  "scripts": {
+    "start": "serve . -l 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skkdept/dept-amer-adobe-wiki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/skkdept/dept-amer-adobe-wiki/issues"
+  },
+  "homepage": "https://github.com/skkdept/dept-amer-adobe-wiki#readme",
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}

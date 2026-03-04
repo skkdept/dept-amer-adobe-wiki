@@ -9,67 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg">
-  <style>
-    #password-section {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-    }
-    #password-section.active {
-      display: flex;
-    }
-    #password-dialog {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      max-width: 400px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-    #password-dialog h2 {
-      margin: 0 0 1.5rem;
-      color: #000;
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-    #password-dialog input {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-      box-sizing: border-box;
-      margin-bottom: 1.5rem;
-    }
-    #password-dialog button {
-      width: 100%;
-      padding: 0.75rem;
-      background: #FF4901;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    #password-dialog button:hover {
-      background: #e63800;
-    }
-    #content {
-      display: block;
-    }
-    #content.hidden {
-      display: none;
-    }
-  </style>
 </head>
 <body>
   <!-- Password Section -->
@@ -89,33 +28,26 @@
       <div class="logo">
         <a href="../index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;">
           <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
-          <span>Adobe Learning Hub</span>
+          <span>DEPT® - Adobe Wiki</span>
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="#adobe-commerce">Commerce</a></li>
-        <li><a href="#adobe-eds">Edge Services</a></li>
-        <li><a href="https://experienceleague.adobe.com" target="_blank">Experience League</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="demos.html">Demos</a></li>
+        <li><a href="trainings.html">Trainings</a></li>
+        <li><a href="sandboxes.html">Sandboxes</a></li>
+        <li><a href="quick-links.html">Quick Links</a></li>
+        <li><button id="search-toggle" class="search-toggle" title="Search (Ctrl+K)">🔍</button></li>
       </ul>
     </nav>
   </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1><strong>Trainings</strong></h1>
-    <p>Learning paths for Adobe Commerce and Edge Delivery Services. Built by DEPT®, designed for modern developers.</p>
-    <div class="hero-ctas">
-      <a href="#adobe-commerce" class="btn btn-primary">Explore Commerce</a>
-      <a href="#adobe-eds" class="btn btn-secondary">Explore Edge Services</a>
-    </div>
-  </section>
 
   <!-- Products Section -->
   <section class="products-section">
     <!-- Adobe Commerce -->
     <div class="product-group" id="adobe-commerce">
       <h2 class="product-title">Adobe Commerce</h2>
-      <p style="color: var(--dept-grey-2); font-size: 1rem; margin-bottom: 2.5rem; max-width: 600px;">Enterprise e-commerce platform for global brands. Master setup, development, and advanced configurations.</p>
+      <p style="color: var(--dept-grey-2); font-size: 0.9rem; margin-bottom: 2.5rem; max-width: 600px;">Enterprise e-commerce platform for global brands. Master setup, development, and advanced configurations.</p>
 
       <div class="tiles-container">
         <a href="adobe-commerce/magento-setup.html" class="tile">
@@ -138,7 +70,7 @@
     <!-- Adobe Edge Delivery Services -->
     <div class="product-group" id="adobe-eds">
       <h2 class="product-title">Edge Delivery Services</h2>
-      <p style="color: var(--dept-grey-2); font-size: 1rem; margin-bottom: 2.5rem; max-width: 600px;">Next-generation content delivery platform built for speed and scale. Learn modern content management and distribution.</p>
+      <p style="color: var(--dept-grey-2); font-size: 0.9rem; margin-bottom: 2.5rem; max-width: 600px;">Next-generation content delivery platform built for speed and scale. Learn modern content management and distribution.</p>
 
       <div class="tiles-container">
         <a href="adobe-eds/dalive-setup.html" class="tile">
@@ -196,42 +128,18 @@
       <p>All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay">
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Search pages… (Esc to close)">
+      <div id="search-results"></div>
+    </div>
+  </div>
   </div>
 
   <script src="../js/main.js"></script>
-  <script>
-    const CORRECT_PASSWORD = 'adobe!';
-    const passwordSection = document.getElementById('password-section');
-    const contentSection = document.getElementById('content');
-    const passwordInput = document.getElementById('password-input');
-    const passwordButton = document.getElementById('password-button');
-
-    function handleAuth() {
-      if (passwordInput.value === CORRECT_PASSWORD) {
-        sessionStorage.setItem('authenticated', 'true');
-        passwordSection.classList.remove('active');
-        contentSection.classList.remove('hidden');
-        passwordInput.value = '';
-      } else {
-        passwordInput.value = '';
-        passwordInput.placeholder = '❌ Incorrect password';
-        passwordInput.style.borderColor = '#cd2a18';
-        passwordInput.focus();
-      }
-    }
-
-    passwordButton.addEventListener('click', handleAuth);
-    passwordInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleAuth();
-    });
-
-    // Check if already authenticated
-    if (sessionStorage.getItem('authenticated') === 'true') {
-      passwordSection.classList.remove('active');
-      contentSection.classList.remove('hidden');
-    } else {
-      passwordInput.focus();
-    }
-  </script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/search.js"></script>
 </body>
 </html>
