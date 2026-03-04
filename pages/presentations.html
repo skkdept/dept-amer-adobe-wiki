@@ -19,7 +19,7 @@
       margin-bottom: 3.5rem;
     }
     .pres-group-title {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -53,19 +53,19 @@
       text-decoration: none;
     }
     .pres-card-icon {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1;
       flex-shrink: 0;
       margin-top: 0.1rem;
     }
     .pres-card-body h4 {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--dept-black);
       margin: 0 0 0.2rem;
     }
     .pres-card-body p {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       color: var(--dept-grey-2);
       margin: 0;
       line-height: 1.4;
@@ -78,28 +78,36 @@
   </style>
 </head>
 <body>
+  <!-- Password Section -->
+  <div id="password-section" class="active">
+    <div id="password-dialog">
+      <h2>🔐 Enter Password</h2>
+      <input type="password" id="password-input" placeholder="Password">
+      <button id="password-button">Access</button>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div id="content" class="hidden">
   <!-- Header & Navigation -->
   <header>
     <nav>
       <div class="logo">
         <a href="../index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;">
           <img src="https://www.deptagency.com/wp-content/uploads/2025/10/logo-dept.svg" alt="DEPT Logo" class="logo-img">
-          <span>Adobe Learning Hub</span>
+          <span>DEPT® - Adobe Wiki</span>
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="trainings.html">Trainings</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
         <li><a href="demos.html">Demos</a></li>
+        <li><a href="trainings.html">Trainings</a></li>
         <li><a href="sandboxes.html">Sandboxes</a></li>
+        <li><a href="quick-links.html">Quick Links</a></li>
+        <li><button id="search-toggle" class="search-toggle" title="Search (Ctrl+K)">🔍</button></li>
       </ul>
     </nav>
   </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1><strong>Presentations</strong></h1>
-    <p>Browse slide decks and presentation materials grouped by audience and topic.</p>
-  </section>
 
   <!-- Presentations Content -->
   <div class="presentations-section">
@@ -227,42 +235,18 @@
       <p>All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay">
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Search pages… (Esc to close)">
+      <div id="search-results"></div>
+    </div>
+  </div>
   </div>
 
   <script src="../js/main.js"></script>
-  <script>
-    const CORRECT_PASSWORD = 'adobe!';
-    const passwordSection = document.getElementById('password-section');
-    const contentSection = document.getElementById('content');
-    const passwordInput = document.getElementById('password-input');
-    const passwordButton = document.getElementById('password-button');
-
-    function handleAuth() {
-      if (passwordInput.value === CORRECT_PASSWORD) {
-        sessionStorage.setItem('authenticated', 'true');
-        passwordSection.classList.remove('active');
-        contentSection.classList.remove('hidden');
-        passwordInput.value = '';
-      } else {
-        passwordInput.value = '';
-        passwordInput.placeholder = '❌ Incorrect password';
-        passwordInput.style.borderColor = '#cd2a18';
-        passwordInput.focus();
-      }
-    }
-
-    passwordButton.addEventListener('click', handleAuth);
-    passwordInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleAuth();
-    });
-
-    // Check if already authenticated
-    if (sessionStorage.getItem('authenticated') === 'true') {
-      passwordSection.classList.remove('active');
-      contentSection.classList.remove('hidden');
-    } else {
-      passwordInput.focus();
-    }
-  </script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/search.js"></script>
 </body>
 </html>
